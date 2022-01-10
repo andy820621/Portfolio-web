@@ -3,6 +3,13 @@
 
 @media only screen and (max-width:1023px){
     /* Header */
+    header .social ul {
+        justify-content: center;
+    }
+
+    header nav .logo{ width: 30%;}
+    header nav .navlink{ width: min(50vw, 420px);}
+
     .header-content {
         padding: 0 20vw;
         align-items: center;
@@ -15,12 +22,6 @@
         text-align: left;
     }
 
-    header .social ul {
-        justify-content: center;
-    }
-
-    header nav .logo{ width: 30%;}
-    header nav .navlink{ width: min(50vw, 420px);}
 
     /* About */
     #about .about-content {

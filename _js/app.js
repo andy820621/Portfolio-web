@@ -12,9 +12,131 @@ document.addEventListener('DOMContentLoaded', function() {
     testWebP().then(hasWebP => {
         if(hasWebP == false) {
             // Change to use .Jpg
-            document.body.classList.add('no-webp');
+            // document.body.classList.add('no-webp');
+            const dataJpgs = document.querySelectorAll('img[data-jpg]');
+            dataJpgs.forEach(dataJpg => {
+                dataJpg.setAttribute('src', dataJpg.dataset.jpg);
+            });
         }
     });
+    
+
+    // Slider Animation
+    // Selector
+    const slider = document.querySelector('.slider-container');
+    const sliderGallery = document.querySelector('.slider-gallery');
+    const sliderGalleryList = document.querySelectorAll('.slider-gallery li');
+    const sliderGalleryImage = document.querySelectorAll('.slider-gallery li img');
+    const sliderPrevBtn = document.querySelector(".prev");
+    const sliderNextBtn = document.querySelector(".next");
+    const dots = document.querySelectorAll('.dot');
+    
+    function slideFunction() {
+        // If no slider gallery section, Return.
+        if(!slider) { return; }
+
+        let activeImg = 1;
+        let sliderWidth = sliderGalleryList[0].getBoundingClientRect().width;
+        
+        window.addEventListener("resize", function() {
+            sliderWidth = sliderGalleryList[0].getBoundingClientRect().width;
+            sliderGallery.style.left = "-" + activeImg * sliderWidth + "px";
+        });
+        
+        // Function
+        const Slideprev = function() {
+            if(activeImg > 1) {
+                activeImg = activeImg - 2;
+                sliderGallery.style.left = "-" + activeImg * sliderWidth + "px";
+                activeImg++;
+                slowlyShrinkAnimation(sliderGalleryImage[activeImg - 1]);
+                EndslowlyShrinkAnimation(sliderGalleryImage[activeImg]);
+            } else if (activeImg == 1) { // click to last img
+                activeImg = sliderGalleryList.length - 1;
+                sliderGallery.style.left = "-" + activeImg * sliderWidth + "px";
+                activeImg++;
+                slowlyShrinkAnimation(sliderGalleryImage[sliderGalleryList.length - 1]);
+                EndslowlyShrinkAnimation(sliderGalleryImage[0]);
+            }
+            SetDotActive();
+        };
+        const Slidenext = function() {
+            if(activeImg < sliderGalleryList.length) { 
+                sliderGallery.style.left = "-" + activeImg * sliderWidth + "px";
+                activeImg++;
+                slowlyShrinkAnimation(sliderGalleryImage[activeImg - 1]);
+                EndslowlyShrinkAnimation(sliderGalleryImage[activeImg - 2]);
+            } else if (activeImg == sliderGalleryList.length) { // click to first img
+                sliderGallery.style.left = "0px";
+                activeImg = 1;
+                slowlyShrinkAnimation(sliderGalleryImage[0]);
+                EndslowlyShrinkAnimation(sliderGalleryImage[sliderGalleryList.length - 1]);
+            }
+            SetDotActive();
+        };
+        const SetDotActive = function() {
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+                dots[activeImg - 1].classList.add('active');
+            });
+        };
+
+        // slowly_shrink Animation
+        const slowlyShrinkAnimation = function(image) {
+            image.style.animation = `slowly_shrink 5.751s linear 0s infinite alternate`;
+        };
+        const EndslowlyShrinkAnimation = function(image) {
+            setTimeout( () => {image.style.animation = '';}, 750);
+        };
+        // Loop
+        let autoSlide;
+        const autoSlideRepeater = function() {
+            slowlyShrinkAnimation(sliderGalleryImage[activeImg - 1]);
+            autoSlide = setInterval(function() {
+                Slidenext();
+            }, 5000);
+        };
+        const resetAutoSlide = function() {
+            clearInterval(autoSlide);
+            autoSlideRepeater();
+        };
+
+
+        // Loop Start
+        autoSlideRepeater();
+
+        
+        // AddEventListener
+        sliderPrevBtn.addEventListener('click', function() { 
+            resetAutoSlide();
+            Slideprev();
+        });
+        sliderNextBtn.addEventListener('click', function() { 
+            resetAutoSlide();
+            Slidenext();
+        });
+        dots.forEach(function dot(e, index) {
+            e.addEventListener('click', function() {
+                if (index == activeImg - 1) {
+                    return;
+                }else {
+                    EndslowlyShrinkAnimation(sliderGalleryImage[activeImg - 1]);
+                    resetAutoSlide();
+                    sliderGallery.style.left = "-" + index * sliderWidth + "px";
+                    slowlyShrinkAnimation(sliderGalleryImage[index]);
+                    activeImg = index + 1;
+                    SetDotActive();
+                }
+            });
+        });
+        slider.addEventListener("mouseover", () => {
+            clearInterval(autoSlide);
+        });
+        slider.addEventListener("mouseout", () => {
+            resetAutoSlide();
+        });
+    };
+    slideFunction();
 
     // Burger
     const nav = document.querySelector('nav');
@@ -46,9 +168,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if(nav.classList.contains('cross') && navLink.classList.contains('nav-active')) {
 
             nav.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-            navLink.addEventListener('click', function(e) {
                 e.stopPropagation();
             });
             document.querySelector("body>div").addEventListener('click', function() {
@@ -84,7 +203,6 @@ document.addEventListener('DOMContentLoaded', function() {
         tabindexs.forEach(tabindex => {
             let tabindexValue = tabindex.getAttribute("tabindex");
             tabindex.setAttribute("tabindex", "-1");
-
         });
     };
     const tabindexToPlus = function() {
@@ -97,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Aria-expanded function
     const ArilExpanded = function() {
-        var x = burger.getAttribute("aria-expanded");
+        let x = burger.getAttribute("aria-expanded");
         if (x == "true") {
             x = "false";
         } else {
@@ -117,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('keydown', (e) => {        
         if(lightboxContainer.classList.contains('active')) return;
         if(e.key.includes('v') || e.key.includes('x')) {
-            e.preventDefault();
+            e.sliderPntDefault();
             clickburger();
             
         }
@@ -171,7 +289,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     aboutA.addEventListener('click', function(e){
-        e.preventDefault();
+        e.sliderPntDefault();
         let About = document.querySelector("#about");
         // let About = document.querySelector(e.target.hash);
         smoothScroll(About, 500);
@@ -308,7 +426,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     WorksFigure[k].classList.add('active');
                 }
             }
-            
         });
     }
     
@@ -318,6 +435,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const lightboxContainer = document.querySelector(".lightbox-container");
     const lightboxImgWrapper = document.querySelector(".lightbox-image-wrapper");
     const lightboxImg = document.querySelector(".lightbox-img");
+    const lightboxTextRight = document.querySelector(".lightbox-text-right");
     
     const lightboxBtns = document.querySelectorAll('.lightbox-btn');
     const lightboxBtnLeft = document.querySelector('.lightbox-btn.left');
@@ -348,8 +466,9 @@ document.addEventListener('DOMContentLoaded', function() {
         if(lightboxImg.src) {
             lightboxImg.src ="";
         }
-        // Set gallery images
+        // Set gallery images & text
         lightboxImg.src = galleryImg[x].dataset.imagesrc;
+        lightboxTextRight.innerHTML = `${x + 1} / ${galleryImg.length}`;
         // Make sure both Btn is working
         removeBtnInavtiveClass();
         // Through hidden buttons, make users know now in first or end image of the gallery
@@ -446,6 +565,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('keydown', (e) => {
         if(!lightboxContainer.classList.contains('active')) return;
+        // if(lightboxContainer.classList.contains('active')) {console.log("contains!!!")};
         if(e.key.includes('Left') || e.key.includes('Right')) {
             e.preventDefault();
             transitionSlideHandler(e.key.toLowerCase());

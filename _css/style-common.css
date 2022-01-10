@@ -5,7 +5,7 @@
 .displayNone {display: none;}
 
 /* Clear Animation Twinkling */
-.CAT {
+.clear-twinkling-transition {
     -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
     -ms-backface-visibility: hidden;

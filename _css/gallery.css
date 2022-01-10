@@ -46,6 +46,19 @@
     height: 100%;
 }
 
+.lightbox-image-wrapper .lightbox-text-left {
+    position: absolute;
+    left: 0;
+    bottom: -2rem;
+    color: var(--clr-lightgrey);
+}
+.lightbox-image-wrapper .lightbox-text-right {
+    position: absolute;
+    right: 0;
+    bottom: -2rem;
+    color: var(--clr-lightgrey);
+}
+
 .lightbox-container .lightbox-btn {
     background-color: transparent;
     border: none;
