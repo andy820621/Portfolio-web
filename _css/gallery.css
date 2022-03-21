@@ -97,7 +97,7 @@
 .lightbox-container .lightbox-btn:focus {
     outline: none;
 }
- .lightbox-container .lightbox-btn.left:focus{ left: -5.25rem; }
+.lightbox-container .lightbox-btn.left:focus{ left: -5.25rem; }
 .lightbox-container .lightbox-btn.right:focus{ right: -5.25rem; }
 
 .lightbox-container :is(.lightbox-btn.left, .lightbox-btn.right).inactive {
@@ -105,8 +105,33 @@
     pointer-events: none;
 }
 
+@media only screen and (max-width:1023px) {
+    .lightbox-container .lightbox-btn {
+        font-size: 2.8rem;
+    }
+    .lightbox-container .lightbox-btn.left {
+        background-color: rgba(24, 24, 24, 0.24);
+        padding: 1px 12px 1px 6px;
+        left: 0;
+    }
+    .lightbox-container .lightbox-btn.right {
+        background-color: rgba(24, 24, 24, 0.24);
+        padding: 1px 6px 1px 12px;
+        right: 0;
+    }
+    @media (hover) {
+        .lightbox-container :is(.lightbox-btn.left, .lightbox-btn.right):hover {
+            background-color: var(--clr-primary);
+            color: inherit;
+        }
+        .lightbox-container .lightbox-btn.left:hover{left: .25rem;}
+        .lightbox-container .lightbox-btn.right:hover{right: .25rem;}
+    }
+    .lightbox-container .lightbox-btn.left:focus{ left: .25rem; }
+    .lightbox-container .lightbox-btn.right:focus{ right: .25rem; }
+}
+
 @media screen and (max-width:565px) {
-    /* gallery */
     .lightbox-image-wrapper .picture { 
         width: 95vw;
         height: 95vw;

@@ -1,0 +1,6 @@
+*.ai
+package-lock.json
+Lato.zip
+design/
+.vscode/
+launch.json
