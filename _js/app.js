@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-	const dataJpgs = document.querySelectorAll("img[data-jpg]");
+	const dataJpgs = [...document.querySelectorAll("img[data-jpg]")];
 	// Test webp work or not
 	function testWebP() {
 		return new Promise((res) => {
@@ -11,25 +11,23 @@ document.addEventListener("DOMContentLoaded", function () {
 			};
 		});
 	}
-	testWebP().then((hasWebP) => {
-		if (hasWebP == false) {
-			// Change to use .Jpg
+	testWebP()
+		.then((hasWebP) => {
 			dataJpgs.forEach((dataJpg) => {
-				dataJpg.setAttribute(dataJpg.dataset.webp, dataJpg.dataset.jpg);
-
+				// Change to use .Jpg
+				if (!hasWebP) dataJpg.setAttribute("data-webp", dataJpg.dataset.jpg);
+			});
+		})
+		.then(() => {
+			// Change image src from placeholder to original img
+			dataJpgs.forEach((dataJpg) => {
 				let imageLarges = new Image();
 				imageLarges.src = dataJpg.dataset.webp;
+				imageLarges.onload = function () {
+					dataJpg.setAttribute("src", dataJpg.dataset.webp);
+				};
 			});
-		}
-	});
-	// Change image src from placeholder to original img
-	dataJpgs.forEach((dataJpg) => {
-		let imageLarges = new Image();
-		imageLarges.src = dataJpg.dataset.webp;
-		imageLarges.onload = function () {
-			dataJpg.setAttribute("src", dataJpg.dataset.webp);
-		};
-	});
+		});
 
 	// Slider Animation
 	// Selector
@@ -242,7 +240,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 	window.addEventListener("keydown", (e) => {
 		if (lightboxContainer.classList.contains("active")) return;
-		if (e.key.includes("v") || e.key.includes("x")) {
+		if (e.key?.includes("v") || e.key?.includes("x")) {
 			e.preventDefault();
 			clickburger();
 		}
@@ -563,7 +561,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	});
 
-	// Keep input background if it have value || hover event
+	// Form & subItems selectors
 	const form_elements = [...document.querySelectorAll(".form-data")];
 	const form = document.querySelector("form");
 	const formBtn = document.querySelector("form button");
@@ -571,51 +569,40 @@ document.addEventListener("DOMContentLoaded", function () {
 	const email = document.querySelector("input#email");
 	const message = document.querySelector("textarea#message");
 
-	name.addEventListener("blur", (e) => {
-		if (e.target.value.trim() === "") {
-			setErrorFor(e.target, "Name is Required");
-			e.target.style = `background-color: var(--clr-primary-transparent);`;
-		} else {
-			setSuccessFor(e.target);
-			e.target.style = `background-color: var(--clr-bgGrey);`;
-		}
-	});
-	email.addEventListener("blur", (e) => {
-		if (e.target.value.trim() === "") {
-			setErrorFor(e.target, "Email cannot be blank");
-			e.target.style = `background-color: var(--clr-primary-transparent);`;
-		} else if (!isEmail(e.target.value.trim())) {
-			setErrorFor(e.target, "Email is not valid");
-			e.target.style = `background-color: var(--clr-bgGrey);`;
-		} else {
-			setSuccessFor(e.target);
-			e.target.style = `background-color: var(--clr-bgGrey);`;
-		}
-	});
-	message.addEventListener("blur", (e) => {
-		if (e.target.value.trim() === "") {
-			setErrorFor(e.target, "Name is Required");
-			e.target.style = `background-color: var(--clr-primary-transparent);`;
-		} else {
-			setSuccessFor(e.target);
-			e.target.style = `background-color: var(--clr-bgGrey);`;
-		}
-	});
+	// Style input background-color when it have value or not && hover
 	form_elements.forEach((form_element) => {
+		form_element.addEventListener("blur", (e) => {
+			if (e.target.value.trim() === "") {
+				e.target.style = `background-color: var(--clr-primary-transparent);`;
+			} else {
+				e.target.style = `background-color: var(--clr-bgGrey);`;
+			}
+		});
 		form_element.addEventListener("focus", function () {
 			form_element.style = `background-color: var(--clr-bgGrey);`;
 		});
 	});
 
-	//Prevent refresh after clicl submit button
-	let checkErrorIfOk = false;
+	// Check input
+	name.addEventListener("input", (e) =>
+		checkIfEmpty(e.target, "Name is Required")
+	);
+	email.addEventListener("input", (e) =>
+		checkEmailIfEmpty(e.target, "Email cannot be blank", "Email is not valid")
+	);
+	message.addEventListener("input", (e) =>
+		checkIfEmpty(e.target, "Message is Required")
+	);
 
+	//Prevent refresh page after click submit button
+	let checkErrorIfOk = false;
 	formBtn.addEventListener("click", (e) => {
 		checkInputs();
 		if (!checkErrorIfOk) return;
 		save_data();
 		return false;
 	});
+	// save data from input items and prepare to send to server
 	function save_data() {
 		let data = new FormData();
 		for (let i = 0; i < form_elements.length; i++) {
@@ -625,9 +612,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		let xhttp = new XMLHttpRequest();
 		xhttp.open("POST", "contact.php", true);
-		xhttp.send(data);
-		xhttp.onreadystatechange = function () {
-			if (this.readyState == 4 && this.status == 200) {
+		xhttp.onload = function () {
+			if (this.status == 200) {
 				formBtn.disabled = false;
 				form.reset();
 
@@ -637,35 +623,39 @@ document.addEventListener("DOMContentLoaded", function () {
 					() => document.querySelector(".alert").classList.remove("active"),
 					2000
 				);
+			} else if (this.status == 405) {
+				console.log(`Method Not Allowed`);
 			}
 		};
+		xhttp.send(data);
 	}
 
+	// Functions to Check inputs
 	function checkInputs() {
 		// get the values from the inputs
-		if (name.value.trim() === "") {
-			// show error & add error class
-			setErrorFor(name, "Name is Required");
-		} else {
-			// add success class
-			setSuccessFor(name);
-		}
-
-		if (email.value.trim() === "") {
-			setErrorFor(email, "Email cannot be blank");
-		} else if (!isEmail(email.value.trim())) {
-			setErrorFor(email, "Email is not valid");
-		} else {
-			setSuccessFor(email);
-		}
-
-		if (message.value.trim() === "") {
-			setErrorFor(message, "Message cannot be blank");
-		} else {
-			setSuccessFor(message);
-		}
+		checkIfEmpty(name, "Name is Required");
+		checkEmailIfEmpty(email, "Email cannot be blank", "Email is not valid");
+		checkIfEmpty(message, "Message is Required");
 		return false;
 	}
+	function checkIfEmpty(target, alertText) {
+		if (target.value.trim() === "") {
+			setErrorFor(target, alertText);
+		} else {
+			setSuccessFor(target);
+		}
+	}
+	function checkEmailIfEmpty(target, alertEmpty, alertValid) {
+		if (target.value.trim() === "") {
+			setErrorFor(target, alertEmpty);
+		} else if (!isEmail(target.value.trim())) {
+			setErrorFor(target, alertValid);
+		} else {
+			setSuccessFor(target);
+		}
+	}
+
+	// Function sto set Alert Error text || show OK style
 	function setErrorFor(input, text) {
 		const errorContiner = input.nextElementSibling;
 		// add error text inside errorContiner
@@ -684,6 +674,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		input.parentElement.classList.add("success");
 		checkErrorIfOk = true;
 	}
+	// Check email's Format
 	function isEmail(email) {
 		return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
 			email

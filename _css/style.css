@@ -45,7 +45,8 @@ body {
 /* Header Design */
 .header {
 	width: 100%;
-	height: min(1080px, 100vh);
+	/* height: min(1080px, 100vh); */
+	height: clamp(700px, 100vh, 1080px);
 	color: var(--clr-white);
 }
 
@@ -317,7 +318,11 @@ nav .logo a:hover img {
 }
 
 .header-content h1 > span {
-	margin-right: 1rem;
+	padding-right: 1rem;
+}
+.typewriter-box span {
+	display: inline-block;
+	padding-right: 0.8vw;
 }
 .header-content .typewriter {
 	position: relative;
