@@ -12,6 +12,7 @@
 		height: calc(100% -12vh);
 		top: 12vh;
 		text-align: left;
+		justify-content: center;
 		align-items: flex-start;
 		padding: 0 10vw;
 	}
@@ -19,7 +20,7 @@
 		justify-content: flex-start;
 	}
 	.header-content h2 {
-		padding: 1rem 0;
+		padding: 0 0 1rem;
 	}
 	.header-content .social ul {
 		justify-content: flex-start;

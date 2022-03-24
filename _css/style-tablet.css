@@ -20,6 +20,12 @@
 		background-color: initial;
 		transition: transform 0s, opacity 0s, visibility 0s;
 	}
+	header nav .navMenu.active {
+		transform: translateY(0);
+		opacity: 1;
+		visibility: visible;
+		box-shadow: none;
+	}
 	.navMenu ul {
 		flex-direction: row;
 		justify-content: space-between;
@@ -33,9 +39,14 @@
 	.navMenu li::after {
 		bottom: 0;
 	}
+	/* Slider-container */
+	.slider-container :is(.prev, .next) {
+		opacity: 1;
+		visibility: visible;
+	}
 	/* Header-content Design */
 	.header-content {
-		padding: 0 20vw;
+		padding: 18vmax 20vw 0;
 	}
 	.header-content h1 {
 		font-weight: 700;
