@@ -5,6 +5,32 @@ document.addEventListener("DOMContentLoaded", function () {
 			if (e.target.matches(selector)) callback(e);
 		});
 	}
+	//Throttle
+	function throttle(cb, delay = 1000) {
+		let shouldWait = false;
+		let waitingArgs;
+		const timeoutFunc = () => {
+			if (waitingArgs == null) {
+				shouldWait = false;
+			} else {
+				cb(...waitingArgs);
+				waitingArgs = null;
+				setTimeout(timeoutFunc, delay);
+			}
+		};
+
+		return (...args) => {
+			if (shouldWait) {
+				waitingArgs = args;
+				return;
+			}
+
+			cb(...args);
+			shouldWait = true;
+
+			setTimeout(timeoutFunc, delay);
+		};
+	}
 
 	const dataJpgs = [...document.querySelectorAll("img[data-jpg]")];
 	// Test webp work or not
@@ -61,14 +87,15 @@ document.addEventListener("DOMContentLoaded", function () {
 		let sliderWidth = sliderGalleryList[0].getBoundingClientRect().width;
 		let sliderOffsetHeight = slider.offsetHeight;
 
-		window.addEventListener("resize", function () {
+		const updateSliderSize = throttle(() => {
 			sliderWidth = sliderGalleryList[0].getBoundingClientRect().width;
 			sliderGallery.style.transform = `translateX(-${
 				currentIndex * sliderWidth
 			}px)`;
-
 			sliderOffsetHeight = slider.offsetHeight;
-		});
+		}, 250);
+		window.addEventListener("resize", updateSliderSize);
+
 		// Disable content menu
 		window.oncontextmenu = function (event) {
 			event.preventDefault();
@@ -77,6 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		};
 
 		// AddEventListener
+		const updateSliderPosition = throttle(touchMove, 50);
 		sliderGalleryList.forEach((li, index) => {
 			const liImage = li.querySelector("img");
 			liImage.addEventListener("dragstart", (e) => {
@@ -87,12 +115,13 @@ document.addEventListener("DOMContentLoaded", function () {
 			// Touch events
 			li.addEventListener("touchstart", touchStart(index));
 			li.addEventListener("touchend", touchEnd);
-			li.addEventListener("touchmove", touchMove);
+			li.addEventListener("touchcancel", touchEnd);
+			li.addEventListener("touchmove", updateSliderPosition);
 			// Mouse events
 			li.addEventListener("mousedown", touchStart(index));
 			li.addEventListener("mouseup", touchEnd);
 			li.addEventListener("mouseleave", touchEnd);
-			li.addEventListener("mousemove", touchMove);
+			li.addEventListener("mousemove", updateSliderPosition);
 		});
 
 		addGlobalEventListener("click", ".slider-container button", (e) => {
@@ -403,14 +432,16 @@ document.addEventListener("DOMContentLoaded", function () {
 	//Window scroll events
 	const sections = [...document.querySelectorAll("div[id]:not(.navMenu)")];
 
-	window.addEventListener("scroll", function () {
+	const updateNavClass = throttle(() => {
 		// Navbar color change when scroll
-		if (window.scrollY > 0) {
-			nav.classList.add("scrolled");
-		} else {
+		if (window.scrollY <= 24) {
 			nav.classList.remove("scrolled");
+		} else {
+			nav.classList.add("scrolled");
 		}
-	});
+	}, 240);
+	window.addEventListener("scroll", updateNavClass);
+
 	// Menu Active when scroll to the section
 	const sectionsOptions = {
 		rootMargin: "-45% 0px -55%",
@@ -602,9 +633,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	let half = document.body.offsetWidth / 2;
+	const updateHalfValue = throttle(
+		() => (half = document.body.offsetWidth / 2),
+		500
+	);
 	window.addEventListener("resize", function () {
 		if (!lightboxContainer.classList.contains("active")) return;
-		half = document.body.offsetWidth / 2;
+		updateHalfValue();
 	});
 	lightboxContainer.addEventListener("click", function () {
 		hideLightBox();
