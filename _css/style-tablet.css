@@ -133,6 +133,9 @@
 	#contact .alert {
 		width: 100%;
 	}
+	#contact button {
+		cursor: pointer;
+	}
 }
 
 @media screen and (min-width: 924px) {

@@ -72,8 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
 	const sliderGalleryImages = [
 		...document.querySelectorAll(".slider-gallery li img"),
 	];
-	const sliderPrevBtn = document.querySelector(".prev");
-	const sliderNextBtn = document.querySelector(".next");
 	const dots = document.querySelectorAll(".dot");
 
 	function slideFunction() {
