@@ -295,16 +295,18 @@ header nav .navMenu.active {
 nav .logo a {
 	display: block;
 	width: max-content;
+	width: 65px;
+	height: 65px;
 }
-nav .logo a img {
-	transition: all 0.4s;
-	filter: invert(99%) sepia(85%) saturate(166%) hue-rotate(276deg)
-		brightness(111%) contrast(90%);
+nav .logo svg {
+	fill: var(--clr-white);
+	transition: fill 0.4s ease-out;
 }
-nav .logo a:hover img {
-	filter: invert(81%) sepia(24%) saturate(500%) hue-rotate(345deg)
-		brightness(92%) contrast(81%);
-	background-color: hsl(0, 0%, 8%, 0.1);
+nav.scrolled .logo svg {
+	fill: var(--clr-black);
+}
+nav .logo a:hover svg {
+	fill: var(--clr-primary);
 }
 
 .header-content {
