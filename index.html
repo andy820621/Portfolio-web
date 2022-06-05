@@ -12,7 +12,6 @@
 			content="Web Design, Hsieh Yao Tsu, 謝耀祖, BarZ, andy820621, ヒカル, Frontend, Developer, Engineer, 前端開發, 前端工程師, HTML, CSS, Javascript, PHP, Laravel, Vue, React,SEO, Graphic Design,Logo,UI,UX"
 		/>
 		<meta name="author" content="Hsieh Yao Tsu | BarZ | ヒカル" />
-		<meta name="description" lang="en" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="theme-color" content="hsl(26, 32%, 66%)" />
 		<meta property="og:title" content="Hsieh Yao Tsu | BarZ | Designer" />
@@ -82,6 +81,8 @@
 			integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
 			crossorigin="anonymous"
 		/>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/TextPlugin.min.js"></script>
 		<link rel="preload" href="_css/style.css" as="style" />
 		<link rel="preload" href="_js/app.js" as="script" />
 		<link rel="stylesheet" href="_css/style.css" />
@@ -166,13 +167,13 @@
 							class="prev fas fa-caret-left"
 							id="prev"
 							aria-label="goPrevBtn"
-							tabindex
+							tabindex="0"
 						></button>
 						<button
 							class="next fas fa-caret-right"
 							id="next"
 							aria-label="goNextBtn"
-							tabindex
+							tabindex="0"
 						></button>
 
 						<div class="dot-container row">
@@ -185,18 +186,15 @@
 					<nav class="positionF">
 						<div class="container flex positionR fxJcSB">
 							<div class="logo">
-								<h1 alt="Logo anchor">
+								<h1 title="Logo anchor">
 									<a
 										href="index.html"
 										aria-label="Logo anchor"
 										title="Hsieh Yao Tsu(aka BarZ)'s personal Logo"
-										tabindex
+										tabindex="0"
 									>
-										<svg
-											viewBox="0 0 65 65"
-											alt="Hsieh Yao Tsu(aka BarZ)'s personal Logo image"
-											title="Hsieh Yao Tsu(aka BarZ)'s personal Logo"
-										>
+										BarZ's Logo
+										<svg viewBox="0 0 65 65">
 											<use xlink:href="./_svg/Logo.svg#barz_fill"></use>
 											<use xlink:href="./_svg/Logo.svg#circle_fill"></use>
 										</svg>
@@ -209,19 +207,20 @@
 								aria-label="menu button"
 								aria-controls="navIdForAriaControls"
 								aria-haspopup="menu"
-								tabindex="0"
+								tabindex="1"
 							>
 								<span>menu burger</span>
-								<div class="hambuger-container positionR">
-									<div class="hamburger_line line1"></div>
-									<div class="hamburger_line line2"></div>
-									<div class="hamburger_line line3"></div>
-								</div>
+								<span class="hambuger-container positionR">
+									<span class="hamburger_line line1"></span>
+									<span class="hamburger_line line2"></span>
+									<span class="hamburger_line line3"></span>
+								</span>
 							</button>
 							<div
 								class="navMenu"
 								aria-expanded="false"
 								id="navIdForAriaControls"
+								role="navigation"
 							>
 								<ul class="flex fxJcSB fxAiC">
 									<li class="home active">
@@ -261,7 +260,7 @@
 										title="Hsieh Yao Tsu(aka BarZ)'s Facebook"
 										target="_blank"
 										rel="noreferrer noopener"
-										tabindex
+										tabindex="0"
 									></a>
 								</li>
 								<li>
@@ -272,7 +271,7 @@
 										title="Hsieh Yao Tsu(aka BarZ)'s Instagram"
 										target="_blank"
 										rel="noreferrer noopener"
-										tabindex
+										tabindex="0"
 									></a>
 								</li>
 								<li>
@@ -283,7 +282,7 @@
 										title="Hsieh Yao Tsu(aka BarZ)'s Github"
 										target="_blank"
 										rel="noreferrer noopener"
-										tabindex
+										tabindex="0"
 									></a>
 								</li>
 							</ul>
@@ -291,11 +290,7 @@
 						<h2>WELCOME TO MY WEBSITE</h2>
 						<h2 class="flex typewriter-box">
 							<span>I'm </span>
-							<div class="typewriter">
-								<p class="is-visible">Hsieh Yao Tsu</p>
-								<p class="is-hidden">Web Designer</p>
-								<p class="is-hidden">ShutterBug</p>
-							</div>
+							<span class="typewriter"></span>
 						</h2>
 						<div class="line"></div>
 						<a
@@ -303,7 +298,7 @@
 							class="btn btn_primary"
 							data-scroll="about"
 							title="anchor to part that about Hsieh Yao Tsu(aka BarZ)"
-							tabindex
+							tabindex="0"
 							><span>ABOUT ME</span></a
 						>
 					</div>
@@ -352,7 +347,7 @@
 										<a
 											href="mailto:andy820621@gmail.com"
 											title="Hsieh Yao Tsu(aka BarZ)'s email"
-											tabindex
+											tabindex="0"
 											>andy820621@gmail.com</a
 										>
 									</div>
@@ -365,7 +360,7 @@
 												title="Hsieh Yao Tsu(aka BarZ)'s Facebook"
 												target="_blank"
 												rel="noreferrer noopener"
-												tabindex
+												tabindex="0"
 											></a>
 										</li>
 										<li>
@@ -376,7 +371,7 @@
 												title="Hsieh Yao Tsu(aka BarZ)'s Instagram"
 												target="_blank"
 												rel="noreferrer noopener"
-												tabindex
+												tabindex="0"
 											></a>
 										</li>
 										<li>
@@ -387,7 +382,7 @@
 												title="Hsieh Yao Tsu(aka BarZ)'s Github"
 												target="_blank"
 												rel="noreferrer noopener"
-												tabindex
+												tabindex="0"
 											></a>
 										</li>
 									</ul>
@@ -625,7 +620,7 @@
 											aria-label="goleftBtn"
 										></button>
 										<img
-											src
+											src="./image"
 											alt="lightbox-img"
 											class="lightbox-img"
 											title="lightbox-img"
@@ -649,9 +644,8 @@
 								<a
 									href="image/1_Tianwei/1.jpg"
 									title="tianwei image"
-									title="coffee machine image"
 									class="lightbox-enabled"
-									tabindex
+									tabindex="0"
 								>
 									<picture>
 										<img
@@ -662,7 +656,7 @@
 										/>
 									</picture>
 									<div class="overlay flex fxDirectionC fxJcC fxAiC">
-										<figcaption>Tianwei</figcaption>
+										<div class="figcaption-title">Tianwei</div>
 										<p>View More</p>
 									</div>
 									<span data-imagesrc="image/1_Tianwei/1.jpg">1 / 11</span>
@@ -680,10 +674,10 @@
 							</figure>
 							<figure class="product fade-in clear-twinkling-transition">
 								<a
-									href="image/2_Coffe machine/1.jpg"
+									href="image/2_Coffe_machine/1.jpg"
 									title="coffee machine image"
 									class="lightbox-enabled"
-									tabindex
+									tabindex="0"
 								>
 									<picture>
 										<img
@@ -694,16 +688,18 @@
 										/>
 									</picture>
 									<div class="overlay flex fxDirectionC fxJcC fxAiC">
-										<figcaption>3D Coffee Garland Machine</figcaption>
+										<div class="figcaption-title">
+											3D Coffee Garland Machine
+										</div>
 										<p>View More</p>
 									</div>
-									<span data-imagesrc="image/2_Coffe machine/1.jpg">1 / 7</span>
-									<span data-imagesrc="image/2_Coffe machine/2.jpg">2 / 7</span>
-									<span data-imagesrc="image/2_Coffe machine/3.jpg">3 / 7</span>
-									<span data-imagesrc="image/2_Coffe machine/4.jpg">4 / 7</span>
-									<span data-imagesrc="image/2_Coffe machine/5.jpg">5 / 7</span>
-									<span data-imagesrc="image/2_Coffe machine/6.jpg">6 / 7</span>
-									<span data-imagesrc="image/2_Coffe machine/7.jpg">7 / 7</span>
+									<span data-imagesrc="image/2_Coffe_machine/1.jpg">1 / 7</span>
+									<span data-imagesrc="image/2_Coffe_machine/2.jpg">2 / 7</span>
+									<span data-imagesrc="image/2_Coffe_machine/3.jpg">3 / 7</span>
+									<span data-imagesrc="image/2_Coffe_machine/4.jpg">4 / 7</span>
+									<span data-imagesrc="image/2_Coffe_machine/5.jpg">5 / 7</span>
+									<span data-imagesrc="image/2_Coffe_machine/6.jpg">6 / 7</span>
+									<span data-imagesrc="image/2_Coffe_machine/7.jpg">7 / 7</span>
 								</a>
 							</figure>
 							<figure class="fade-in clear-twinkling-transition">
@@ -711,7 +707,7 @@
 									href="image/3_Food_Deliver_App/1.gif"
 									title="FoodDeliver app image"
 									class="lightbox-enabled"
-									tabindex
+									tabindex="0"
 								>
 									<picture>
 										<img
@@ -722,7 +718,7 @@
 										/>
 									</picture>
 									<div class="overlay flex fxDirectionC fxJcC fxAiC">
-										<figcaption>Try Deliver App by XD</figcaption>
+										<div class="figcaption-title">Try Deliver App by XD</div>
 										<p>View More</p>
 									</div>
 									<span data-imagesrc="image/3_Food_Deliver_App/1.gif"
@@ -750,10 +746,10 @@
 							</figure>
 							<figure class="product fade-in clear-twinkling-transition">
 								<a
-									href="image/4_Dunes Divan/1.jpg"
+									href="image/4_Dunes_Divan/1.jpg"
 									title="Dunes Divan image"
 									class="lightbox-enabled"
-									tabindex
+									tabindex="0"
 								>
 									<picture>
 										<img
@@ -764,18 +760,18 @@
 										/>
 									</picture>
 									<div class="overlay flex fxDirectionC fxJcC fxAiC">
-										<figcaption>DunesDivan</figcaption>
+										<div class="figcaption-title">DunesDivan</div>
 										<p>View More</p>
 									</div>
-									<span data-imagesrc="image/4_Dunes Divan/1.jpg">1 / 9</span>
-									<span data-imagesrc="image/4_Dunes Divan/2.jpg">2 / 9</span>
-									<span data-imagesrc="image/4_Dunes Divan/3.jpg">3 / 9</span>
-									<span data-imagesrc="image/4_Dunes Divan/4.jpg">4 / 9</span>
-									<span data-imagesrc="image/4_Dunes Divan/5.jpg">5 / 9</span>
-									<span data-imagesrc="image/4_Dunes Divan/6.jpg">6 / 9</span>
-									<span data-imagesrc="image/4_Dunes Divan/7.jpg">7 / 9</span>
-									<span data-imagesrc="image/4_Dunes Divan/8.jpg">8 / 9</span>
-									<span data-imagesrc="image/4_Dunes Divan/9.jpg">9 / 9</span>
+									<span data-imagesrc="image/4_Dunes_Divan/1.jpg">1 / 9</span>
+									<span data-imagesrc="image/4_Dunes_Divan/2.jpg">2 / 9</span>
+									<span data-imagesrc="image/4_Dunes_Divan/3.jpg">3 / 9</span>
+									<span data-imagesrc="image/4_Dunes_Divan/4.jpg">4 / 9</span>
+									<span data-imagesrc="image/4_Dunes_Divan/5.jpg">5 / 9</span>
+									<span data-imagesrc="image/4_Dunes_Divan/6.jpg">6 / 9</span>
+									<span data-imagesrc="image/4_Dunes_Divan/7.jpg">7 / 9</span>
+									<span data-imagesrc="image/4_Dunes_Divan/8.jpg">8 / 9</span>
+									<span data-imagesrc="image/4_Dunes_Divan/9.jpg">9 / 9</span>
 								</a>
 							</figure>
 							<figure class="graphic fade-in clear-twinkling-transition">
@@ -783,7 +779,7 @@
 									href="image/5_Swallow/1.jpg"
 									title="Swallow image"
 									class="lightbox-enabled"
-									tabindex
+									tabindex="0"
 								>
 									<picture>
 										<img
@@ -794,7 +790,7 @@
 										/>
 									</picture>
 									<div class="overlay flex fxDirectionC fxJcC fxAiC">
-										<figcaption>燕子谷</figcaption>
+										<div class="figcaption-title">燕子谷</div>
 										<p>View More</p>
 									</div>
 									<span data-imagesrc="image/5_Swallow/1.jpg">1 / 10</span>
@@ -814,7 +810,7 @@
 									href="image/6_TurnHands/1.jpg"
 									title="TurnHands image"
 									class="lightbox-enabled"
-									tabindex
+									tabindex="0"
 								>
 									<picture>
 										<img
@@ -825,7 +821,7 @@
 										/>
 									</picture>
 									<div class="overlay flex fxDirectionC fxJcC fxAiC">
-										<figcaption>轉守</figcaption>
+										<div class="figcaption-title">轉守</div>
 										<p>View More</p>
 									</div>
 									<span data-imagesrc="image/6_TurnHands/1.jpg">1 / 8</span>
@@ -843,7 +839,7 @@
 									href="image/7_kanezawa/1.jpg"
 									title="kanezawa image"
 									class="lightbox-enabled"
-									tabindex
+									tabindex="0"
 								>
 									<picture>
 										<img
@@ -854,7 +850,7 @@
 										/>
 									</picture>
 									<div class="overlay flex fxDirectionC fxJcC fxAiC">
-										<figcaption>Kanazawa Travel Poster</figcaption>
+										<div class="figcaption-title">Kanazawa Travel Poster</div>
 										<p>View More</p>
 									</div>
 									<span data-imagesrc="image/7_kanezawa/1.jpg">1 / 2</span>
@@ -863,10 +859,10 @@
 							</figure>
 							<figure class="graphic fade-in clear-twinkling-transition">
 								<a
-									href="image/8_BarZ Logo/1.jpg"
+									href="image/8_BarZ_Logo/1.jpg"
 									title="BarZ logo image"
 									class="lightbox-enabled"
-									tabindex
+									tabindex="0"
 								>
 									<picture>
 										<img
@@ -877,11 +873,11 @@
 										/>
 									</picture>
 									<div class="overlay flex fxDirectionC fxJcC fxAiC">
-										<figcaption>BarZ's personal Logo</figcaption>
+										<div class="figcaption-title">BarZ's personal Logo</div>
 										<p>View More</p>
 									</div>
-									<span data-imagesrc="image/8_BarZ Logo/1.jpg">1 / 2</span>
-									<span data-imagesrc="image/8_BarZ Logo/2.jpg">2 / 2</span>
+									<span data-imagesrc="image/8_BarZ_Logo/1.jpg">1 / 2</span>
+									<span data-imagesrc="image/8_BarZ_Logo/2.jpg">2 / 2</span>
 								</a>
 							</figure>
 						</section>
@@ -906,7 +902,7 @@
 										autocomplete="name"
 										placeholder="Name*"
 										required
-										tabindex
+										tabindex="0"
 										class="form-data"
 									/>
 									<span class="error-alert"></span>
@@ -920,7 +916,7 @@
 										autocomplete="email"
 										placeholder="E-mail*"
 										required
-										tabindex
+										tabindex="0"
 										class="form-data"
 									/>
 									<span class="error-alert"></span>
@@ -932,7 +928,7 @@
 										id="subject"
 										name="subject"
 										placeholder="Subject"
-										tabindex
+										tabindex="0"
 										class="form-data"
 									/>
 									<span class="error-alert"></span>
@@ -946,7 +942,7 @@
 										rows="5"
 										placeholder="Your Message*"
 										required
-										tabindex
+										tabindex="0"
 										class="form-data"
 									></textarea>
 									<span class="error-alert"></span>
@@ -956,7 +952,7 @@
 									name="submit"
 									id="submit"
 									class="btn btn_primary"
-									tabindex
+									tabindex="0"
 								>
 									<span>Submit</span>
 								</button>
@@ -977,7 +973,7 @@
 											aria-label="instagram"
 											title="Hsieh Yao Tsu(aka BarZ)'s Instagram"
 											rel="noreferrer noopener"
-											tabindex
+											tabindex="0"
 										>
 											<i class="fab fa-instagram"></i>
 											<p>andy820621</p>
@@ -990,7 +986,7 @@
 											aria-label="facebook"
 											title="Hsieh Yao Tsu(aka BarZ)'s Facebook"
 											rel="noreferrer noopener"
-											tabindex
+											tabindex="0"
 										>
 											<i class="fab fa-facebook-f"></i>
 											<p>andy820621</p>
@@ -1003,7 +999,7 @@
 											aria-label="twitter"
 											title="Hsieh Yao Tsu(aka BarZ)'s Twitter"
 											rel="noreferrer noopener"
-											tabindex
+											tabindex="0"
 										>
 											<i class="fab fa-twitter"></i>
 											<p>Barz3064</p>
@@ -1016,7 +1012,7 @@
 											aria-label="github"
 											title="Hsieh Yao Tsu(aka BarZ)'s Github"
 											rel="noreferrer noopener"
-											tabindex
+											tabindex="0"
 										>
 											<i class="fab fa-github"></i>
 											<p>andy820621</p>

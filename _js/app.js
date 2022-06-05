@@ -62,6 +62,38 @@ document.addEventListener("DOMContentLoaded", function () {
 			});
 		});
 
+	// Typewritter Design
+	function textAnimation() {
+		gsap.defaults({
+			duration: 1,
+			ease: "none",
+			repeat: 1,
+			repeatDelay: 1,
+			delay: 0.24,
+		});
+		gsap
+			.timeline({ repeat: -1 })
+			.to(".typewriter", {
+				text: "Hsieh Yao-tsu ",
+				yoyo: true,
+			})
+			.to(".typewriter", {
+				text: "Web Designer ",
+				yoyo: true,
+			})
+			.to(".typewriter", {
+				text: "Frontend Developer ",
+				yoyo: true,
+			})
+			.to(".typewriter", {
+				text: "SutterBug ",
+				yoyo: true,
+			});
+	}
+	textAnimation();
+	document
+		.querySelector(".typewriter")
+		.addEventListener("animationend", textAnimation);
 	// Slider Animation
 	// Selector
 	const slider = document.querySelector(".slider-container");
@@ -335,28 +367,28 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	// Tabindex
-	const tabindexs = document.querySelectorAll("[tabindex]:not([tabindex='0'])");
-	const tabindexChange = function () {
+	const tabindexs = document.querySelectorAll("[tabindex='0']");
+	function tabindexChange() {
 		tabindexs.forEach((tabindex) => {
 			let tabindexValue = tabindex.getAttribute("tabindex");
-			if (tabindexValue == "") {
+			if (tabindexValue == "0") {
 				tabindex.setAttribute("tabindex", "-1");
 			} else {
-				tabindex.setAttribute("tabindex", "");
+				tabindex.setAttribute("tabindex", "0");
 			}
 		});
-	};
+	}
 
 	// Aria-expanded function
-	const ArilExpanded = function (e) {
+	function ArilExpanded(e) {
 		e.setAttribute(
 			"aria-expanded",
 			e.getAttribute("aria-expanded") == "true" ? "false" : "true"
 		);
-	};
-	const ArilExpandedFalse = function (e) {
+	}
+	function ArilExpandedFalse(e) {
 		e.setAttribute("aria-expanded", false);
-	};
+	}
 
 	// EventListener
 	burger.addEventListener("click", function () {
