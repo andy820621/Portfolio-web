@@ -3,6 +3,7 @@
 	min-width: 100vw;
 	min-height: 100vh;
 	background-color: rgba(0, 0, 0, 0.7);
+	backdrop-filter: blur(0.2em);
 	display: grid;
 	place-items: center;
 	z-index: 1000;
@@ -28,6 +29,7 @@
 	cursor: url(../svg/left.svg), auto;
 }
 .lightbox-image-wrapper .picture {
+	border-radius: clamp(0.4rem, 0.5vw, 0.81rem);
 	width: min(757.5px, 95vw);
 	height: min(505px, 95vh);
 	box-shadow: 3px 3px 10px rgba(100, 100, 100, 0.5);
@@ -37,6 +39,7 @@
 	align-items: center;
 }
 .lightbox-image-wrapper .picture .lightbox-img {
+	border-radius: clamp(0.4rem, 0.5vw, 0.81rem);
 	max-height: 100%;
 	object-fit: contain;
 	margin: auto;
