@@ -1,1 +1,5 @@
-node_modules
+*.ai
+node_modules/
+design/
+.vscode/
+dist/
