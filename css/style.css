@@ -1047,7 +1047,7 @@ nav.cross a {
 	}
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 799px) {
 	@media screen and (orientation: portrait) {
 		/* Header */
 		.header-content h1 {
