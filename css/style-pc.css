@@ -89,24 +89,18 @@
 	}
 
 	/* Work */
-	.work-content {
+	/* .work-content {
 		width: clamp(960px, 90vw, 1140px);
+	} */
+	.work-content {
+		--grid-number: 4;
+		--figure-size: max(20vw, 224px);
 	}
 }
 
-@media screen and (min-width: 1500px) {
+@media (min-width: 1380px) {
 	.work-content {
-		width: min(81vw, 1550px);
-	}
-	.work-content figure {
-		flex-basis: calc(100% / 4);
-	}
-}
-@media screen and (min-width: 1900px) {
-	.work-content {
-		width: min(81vw, 1950px);
-	}
-	.work-content figure {
-		flex-basis: calc(100% / 5);
+		--grid-number: 5;
+		--figure-size: min(15.5vw, 280px);
 	}
 }

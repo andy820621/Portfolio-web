@@ -113,13 +113,9 @@
 
 	/* Work */
 	.work-content {
-		width: clamp(460px, 85%, 600px);
-	}
-	.work-content > figure {
-		flex-basis: calc(100% / 2);
-	}
-	.work-content > figure figcaption {
-		font-weight: normal;
+		--grid-number: 3;
+		--figure-size: max(24vw, 230px);
+		--grid-gap: clamp(1rem, 2.5vw, 3rem);
 	}
 
 	/* Contact */
@@ -135,15 +131,5 @@
 	}
 	#contact button {
 		cursor: pointer;
-	}
-}
-
-@media screen and (min-width: 924px) {
-	.work-content {
-		width: 100%;
-		padding: 0 5%;
-	}
-	.work-content > figure {
-		flex-basis: 33.33333%;
 	}
 }

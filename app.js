@@ -507,30 +507,84 @@ fromRights.forEach((fromRight) => {
 
 // Workmenu
 const WorksSort = document.querySelector(".works-sort").children;
-const WorksFigure = document.querySelector(".works").querySelectorAll("figure");
+const WorkContent = document.querySelector(".work-content");
+const WorksFigures = document
+	.querySelector(".work-content")
+	.querySelectorAll("figure");
+// const activeFigures = () => WorkContent.querySelectorAll(".active");
 
 for (let i = 0; i < WorksSort.length; i++) {
-	WorksSort[i].addEventListener("click", function () {
-		for (let j = 0; j < WorksSort.length; j++) {
-			WorksSort[j].classList.remove("current");
+	WorksSort[i].addEventListener("click", (e) => {
+		document.querySelector(".works-sort .current").classList.remove("current");
+		e.target.classList.add("current");
+		let currentData = e.target.getAttribute("data-current");
+		// Set Active Figures
+		if (currentData === "all") {
+			WorksFigures.forEach((figure) => {
+				figure.classList.add("active");
+				figure.classList.remove("delete");
+			});
+		} else {
+			WorksFigures.forEach((figure) => {
+				figure.classList.toggle(
+					"active",
+					figure.classList.contains(currentData)
+				);
+				figure.classList.toggle(
+					"delete",
+					!figure.classList.contains(currentData)
+				);
+			});
 		}
-		this.classList.add("current");
-		let currentData = this.getAttribute("data-current");
 
-		for (let k = 0; k < WorksFigure.length; k++) {
-			WorksFigure[k].classList.remove("active");
-			WorksFigure[k].classList.add("delete");
-
-			if (
-				WorksFigure[k].classList.contains(currentData) ||
-				currentData == "all"
-			) {
-				WorksFigure[k].classList.remove("delete");
-				WorksFigure[k].classList.add("active");
-			}
-		}
+		// ser Position
+		const grid_number = getGridNumber();
+		console.log(grid_number);
+		serFigurePosition(grid_number);
 	});
 }
+
+// page first load
+let now_grid_number = getGridNumber();
+serFigurePosition(now_grid_number);
+
+// Function
+const updateThrottleserFigurePosition = throttle(serFigurePosition, 240);
+function serFigurePosition(grid_number) {
+	const activeFigures = WorkContent.querySelectorAll(".active");
+
+	const grid_row_number = Math.ceil(activeFigures.length / grid_number);
+	WorkContent.style.setProperty("--grid-rows", grid_row_number);
+
+	for (let i = 0; i < activeFigures.length; i++) {
+		const x = i % grid_number;
+		const y = Math.floor(i / grid_number);
+		activeFigures[i].style.setProperty("--x", x);
+		activeFigures[i].style.setProperty("--y", y);
+	}
+}
+function getGridNumber() {
+	const vw = window.innerWidth;
+
+	if (vw >= 1380) {
+		return 5;
+	} else if (vw >= 1023) {
+		return 4;
+	} else if (vw >= 800) {
+		return 3;
+	} else if (vw >= 591) {
+		return 2;
+	} else {
+		return 1;
+	}
+}
+// Judge how much window width change and if revoke function
+window.addEventListener("resize", () => {
+	const new_grid_number = getGridNumber();
+	if (new_grid_number === now_grid_number) return;
+	now_grid_number = new_grid_number;
+	updateThrottleserFigurePosition(new_grid_number);
+});
 
 // LightBox query selectors
 const work = document.querySelector("#work");

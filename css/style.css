@@ -818,18 +818,29 @@ nav.cross a {
 }
 
 .work-content {
-	width: 85%; /* Mobile only */
-	justify-content: flex-start;
+	--grid-number: 1;
+	--figure-size: 66vw;
+	--grid-gap: 3rem;
+
+	display: grid;
+	grid-template-columns: repeat(var(--grid-number), var(--figure-size));
+	grid-template-rows: repeat(var(--grid-rows), var(--figure-size));
+	gap: var(--grid-gap);
 }
 .work-content > figure {
-	flex-basis: 50%; /* Mobile only */
 	width: 100%;
-	margin-bottom: 3rem;
-	padding: 0 1rem;
 	-webkit-transform-origin: center;
 	transform-origin: center;
-	-webkit-transition: all 0.6s ease, opacity 0.6s linear;
-	transition: all 0.6s ease, opacity 0.6s linear;
+	-webkit-transition: all 0.6s ease;
+	transition: all 0.6s ease;
+
+	/* --x: 0;
+	--y: 0; */
+	position: absolute;
+	width: var(--figure-size);
+	height: var(--figure-size);
+	left: calc(var(--x) * (var(--grid-gap) + var(--figure-size)));
+	top: calc(var(--y) * (var(--grid-gap) + var(--figure-size)));
 }
 .work-content > figure.active {
 	opacity: 1;
@@ -838,15 +849,15 @@ nav.cross a {
 	transform: scale(1);
 }
 .work-content > figure.delete {
-	flex-basis: 0;
-	width: 0%;
-	padding: 0;
-	margin: 0;
+	/* width: 0%; */
+	/* padding: 0; */
+	/* margin: 0; */
 	opacity: 0;
 	visibility: hidden;
 
 	-webkit-transform: scale(0);
 	transform: scale(0);
+	/* transform-origin: bottom right; */
 }
 .work-content > figure .figcaption-title {
 	font-weight: 600;
@@ -1088,16 +1099,6 @@ nav.cross a {
 		.from-right {
 			transform: translateX(-50%); /* equal to from left value */
 		}
-
-		/* Work */
-		.work-content {
-			width: clamp(280px, 85%, 350px);
-			flex-direction: column;
-			flex-wrap: nowrap;
-		}
-		.work-content > figure {
-			flex-basis: min(85%, 330px);
-		}
 	}
 
 	@media screen and (orientation: landscape) {
@@ -1129,11 +1130,6 @@ nav.cross a {
 			margin-bottom: 2vh;
 		}
 
-		/* Work */
-		.work-content {
-			width: clamp(460px, 85%, 600px);
-		}
-
 		/* gallery */
 		.lightbox-image-wrapper .picture {
 			width: max(81vw, 499px);
@@ -1144,16 +1140,14 @@ nav.cross a {
 			right: -2rem;
 			font-size: 1.6rem;
 		}
+	}
+}
 
-		@media screen and (max-width: 600px) {
-			.work-content {
-				width: clamp(280px, 85%, 350px);
-				flex-direction: column;
-				flex-wrap: nowrap;
-			}
-			.work-content > figure {
-				flex-basis: min(60%, 330px);
-			}
-		}
+@media screen and (min-width: 591px) {
+	/* Work */
+	.work-content {
+		--grid-number: 2;
+		--figure-size: 38vw;
+		--grid-gap: max(1rem, 4vw);
 	}
 }
