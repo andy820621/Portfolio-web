@@ -112,6 +112,9 @@
 	}
 
 	/* Work */
+	.works-sort {
+		justify-content: space-evenly;
+	}
 	.work-content {
 		--grid-number: 3;
 		--figure-size: max(24vw, 230px);
