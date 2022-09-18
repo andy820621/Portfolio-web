@@ -704,6 +704,8 @@ nav.cross a {
 	justify-items: center;
 	width: 100%;
 	color: var(--clr-primary);
+	margin-bottom: 1.5rem;
+	/* mobile only */
 	margin-top: 2rem;
 }
 .software :is(ul, ol) {
@@ -751,7 +753,7 @@ nav.cross a {
 	margin: 0;
 }
 .software .slider-gallery ol li {
-	cursor: default;
+	user-select: none;
 	display: grid;
 	place-content: center;
 	/* mobile only */
@@ -777,6 +779,12 @@ nav.cross a {
 .software .slider-container button:hover {
 	color: var(--clr-primary);
 	background-color: var(--clr-bgGrey);
+}
+.software .slider-container button.prev:hover {
+	left: 0.5rem;
+}
+.software .slider-container button.next:hover {
+	right: 0.5rem;
 }
 /* dot */
 .software .dot-container {
