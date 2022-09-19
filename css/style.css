@@ -1026,6 +1026,9 @@ nav.cross a {
 .work-content > figure .overlay > .links > a > i {
 	font-size: 1.1rem;
 }
+.work-content > figure .overlay > .links > a > i.codepen {
+	font-size: 1.3rem;
+}
 .work-content > figure .overlay > .links > a {
 	transition: all 0.3s;
 }
