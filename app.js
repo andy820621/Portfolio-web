@@ -351,6 +351,7 @@ const gameFigures = document.querySelectorAll("figure.game");
 setGameActiveOrNot();
 function setGameActiveOrNot() {
 	const nowGridNumber = getGridNumber();
+	if (nowGridNumber !== 3 || nowGridNumber !== 2) return;
 	gameFigures.forEach((gameFigure) => {
 		gameFigure.classList.toggle("active", nowGridNumber === 3);
 		gameFigure.classList.toggle("delete", nowGridNumber === 2);
