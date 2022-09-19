@@ -986,7 +986,7 @@ nav.cross a {
 	width: 100%;
 	border-radius: 5px;
 }
-.work-content > figure a {
+.work-content > figure .lightbox-enabled {
 	display: block;
 	position: relative;
 }
@@ -996,8 +996,9 @@ nav.cross a {
 	inset: 5px 5px 5px 5px;
 	text-align: center;
 	padding: 1.5rem;
+	cursor: pointer;
 }
-.work-content > figure .overlay > .figcaption-title {
+.work-content > figure .overlay .figcaption-title {
 	color: var(--clr-white);
 	transform: translateY(-15px) translateZ(0);
 	opacity: 0;
@@ -1011,6 +1012,27 @@ nav.cross a {
 	z-index: 5;
 	transition: all 0.6s;
 }
+.work-content > figure .overlay > .links {
+	transform: translateY(15px) translateZ(0);
+	opacity: 0;
+	z-index: 5;
+	transition: all 0.6s;
+	gap: 1.2rem;
+	margin-top: 2rem;
+}
+.work-content > figure .overlay > .links > a {
+	color: var(--clr-white);
+}
+.work-content > figure .overlay > .links > a > i {
+	font-size: 1.1rem;
+}
+.work-content > figure .overlay > .links > a {
+	transition: all 0.3s;
+}
+.work-content > figure .overlay > .links > a:hover {
+	color: var(--clr-primary);
+	scale: 1.1;
+}
 .work-content > figure .overlay::before {
 	content: "";
 	position: absolute;
@@ -1021,6 +1043,7 @@ nav.cross a {
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 5px;
 	transition: all 0.6s;
+	backdrop-filter: blur(0.24rem);
 }
 
 /* Contact */
@@ -1147,7 +1170,7 @@ nav.cross a {
 		transform: scale(1) translateZ(0);
 		opacity: 1;
 	}
-	.work-content > figure:hover .overlay > :is(.figcaption-title, p) {
+	.work-content > figure:hover .overlay :is(.figcaption-title, p, .links) {
 		transform: translateY(0) translateZ(0);
 		opacity: 1;
 	}
@@ -1165,6 +1188,9 @@ nav.cross a {
 }
 
 @media screen and (max-width: 799px) {
+	.work-title > .works-sort > .mobileHide {
+		display: none;
+	}
 	@media screen and (orientation: portrait) {
 		/* Header */
 		.header-content h1 {
