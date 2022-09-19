@@ -74,9 +74,10 @@
 		/>
 		<link
 			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-			integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+			integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
 		/>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/TextPlugin.min.js"></script>
@@ -766,11 +767,12 @@
 							<div class="works-sort flex fxJcSB">
 								<div data-current="all" class="current">ALL</div>
 								<div data-current="web">Web</div>
-								<div data-current="game">Game</div>
+								<div data-current="game" class="mobileHide">Game</div>
 								<div data-current="graphic">Graphic</div>
 								<div data-current="product">Product</div>
 							</div>
 						</section>
+
 						<section class="work-content positionR">
 							<div class="lightbox-container clear-twinkling-transition">
 								<div
@@ -802,13 +804,92 @@
 									</div>
 								</div>
 							</div>
+							<!-- 1 -->
+							<figure class="web fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/CoachSearchApp.jpg"
+											alt="Coach Search App image"
+											title="CoachSearchApp"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Coach Search App</div>
+										<div class="links flex">
+											<a
+												href="https://coach-search-app.vercel.app/"
+												target="_blank"
+											>
+												<i class="fa-solid fa-link"></i>
+												<p>Demo</p>
+											</a>
+											<a
+												href="https://github.com/andy820621/Coach-Search-App"
+												target="_blank"
+											>
+												<i class="fab fa-github"></i>
+												<p>Github</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/Coach_Search_App/1.jpg"></span>
+								</div>
+							</figure>
+							<!-- 2 -->
+							<figure class="web fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/GraphImageGenerator.jpg"
+											alt="Graph Image Generator image"
+											title="Graph Image Generator"
+										/>
+										<!-- <img
+											loading="lazy"
+											src="/image/Graph_Image_Generator/moving.gif"
+											alt="Graph Image Generator image"
+											title="Graph Image Generator"
+										/> -->
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Graph Image Generator</div>
+										<div class="links flex">
+											<a
+												href="https://graph-image-generator.vercel.app/"
+												target="_blank"
+											>
+												<i class="fa-solid fa-link"></i>
+												<p>Demo</p>
+											</a>
+											<a
+												href="https://github.com/andy820621/Graph-Image-Generator"
+												target="_blank"
+											>
+												<i class="fab fa-github"></i>
+												<p>Github</p>
+											</a>
+										</div>
+									</div>
+									<span
+										data-imagesrc="/image/Graph_Image_Generator/addmode&draw.gif"
+									></span>
+									<span
+										data-imagesrc="/image/Graph_Image_Generator/modeChange.gif"
+									></span>
+									<span
+										data-imagesrc="/image/Graph_Image_Generator/clear&sizeChange.gif"
+									></span>
+									<span
+										data-imagesrc="/image/Graph_Image_Generator/loadData.gif"
+									></span>
+								</div>
+							</figure>
+							<!-- 3 -->
 							<figure class="graphic fade-in clear-twinkling-transition active">
-								<a
-									href="/image/Tianwei/1.jpg"
-									title="tianwei image"
-									class="lightbox-enabled"
-									tabindex="0"
-								>
+								<div class="lightbox-enabled" tabindex="0">
 									<picture>
 										<img
 											loading="lazy"
@@ -832,15 +913,228 @@
 									<span data-imagesrc="/image/Tianwei//9.jpg">9 / 11</span>
 									<span data-imagesrc="/image/Tianwei//10.jpg">10 / 11</span>
 									<span data-imagesrc="/image/Tianwei//11.jpg">11 / 11</span>
-								</a>
+								</div>
 							</figure>
+							<!-- 4 -->
+							<figure class="game fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/MemoryMusicBlocks.jpg"
+											alt="MemoryMusicBlocks image"
+											title="Memory Music Blocks"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Memory Music Blocks</div>
+										<div class="links flex">
+											<a
+												href="https://memory-music-blocks.vercel.app/"
+												target="_blank"
+											>
+												<i class="fa-solid fa-link"></i>
+												<p>Demo</p>
+											</a>
+											<a
+												href="https://github.com/andy820621/Memory-Music-Blocks"
+												target="_blank"
+											>
+												<i class="fab fa-github"></i>
+												<p>Github</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/Memory_Music_Blocks/1.jpg"></span>
+								</div>
+							</figure>
+							<!-- 5 -->
+							<figure class="game fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/2048.jpg"
+											alt="2048 image"
+											title="2048"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">2048</div>
+										<div class="links flex">
+											<a href="https://2048-orpin.vercel.app/" target="_blank">
+												<i class="fa-solid fa-link"></i>
+												<p>Demo</p>
+											</a>
+											<a
+												href="https://github.com/andy820621/2048"
+												target="_blank"
+											>
+												<i class="fab fa-github"></i>
+												<p>Github</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/2048/1.jpg"></span>
+								</div>
+							</figure>
+							<!-- 6 -->
+							<figure class="web fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/ManageLandingPage.jpg"
+											alt="ManageLandingPage image"
+											title="Manage Landing Page Challenge"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">
+											Frontend Mentor Challenge with Tailwind
+										</div>
+										<div class="links flex">
+											<a
+												href="https://manage-landing-page-coral.vercel.app/"
+												target="_blank"
+											>
+												<i class="fa-solid fa-link"></i>
+												<p>Demo</p>
+											</a>
+											<a
+												href="https://github.com/andy820621/Manage-Landing-Page"
+												target="_blank"
+											>
+												<i class="fab fa-github"></i>
+												<p>Github</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/Manage_Landing_Page/1.jpg"></span>
+								</div>
+							</figure>
+							<!-- 7 -->
+							<figure class="graphic fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/Swallow.jpg"
+											alt="Swallow Img"
+											title="燕子谷"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">燕子谷</div>
+										<p>View More</p>
+									</div>
+									<span data-imagesrc="/image/Swallow/1.jpg">1 / 10</span>
+									<span data-imagesrc="/image/Swallow/2.jpg">2 / 10</span>
+									<span data-imagesrc="/image/Swallow/3.jpg">3 / 10</span>
+									<span data-imagesrc="/image/Swallow/4.jpg">4 / 10</span>
+									<span data-imagesrc="/image/Swallow/5.jpg">5 / 10</span>
+									<span data-imagesrc="/image/Swallow/5.gif">6 / 10</span>
+									<span data-imagesrc="/image/Swallow/6.jpg">7 / 10</span>
+									<span data-imagesrc="/image/Swallow/7.jpg">8 / 10</span>
+									<span data-imagesrc="/image/Swallow/8.jpg">9 / 10</span>
+									<span data-imagesrc="/image/Swallow/9.jpg">10 / 10</span>
+								</div>
+							</figure>
+							<!-- 8 -->
+							<figure class="game fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/Pacman.jpg"
+											alt="Pacman image"
+											title="Pacman"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Pacman</div>
+										<div class="links flex">
+											<a
+												href="https://codepen.io/eebgwuss/full/gOezZVv"
+												target="_blank"
+											>
+												<i class="fa-brands fa-codepen"></i>
+												<p>Codepen</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/Pacman/1.jpg"></span>
+								</div>
+							</figure>
+							<!-- 9 -->
+							<figure class="web fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/CoffeeEditor.jpg"
+											alt="CoffeeEditor image"
+											title="CoffeeEditor"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Coffee Editor</div>
+										<div class="links flex">
+											<a
+												href="https://coffee-editor.vercel.app/"
+												target="_blank"
+											>
+												<i class="fa-solid fa-link"></i>
+												<p>Demo</p>
+											</a>
+											<a
+												href="https://github.com/andy820621/Coffee-Editor"
+												target="_blank"
+											>
+												<i class="fab fa-github"></i>
+												<p>Github</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/Coffee_Editor/1.jpg"></span>
+								</div>
+							</figure>
+							<!-- 10 -->
+							<figure class="web fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/TodoList.jpg"
+											alt="TodoList image"
+											title="TodoList"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Todolist with VanillaJS</div>
+										<div class="links flex">
+											<a
+												href="https://todolist-vanillajs-bybarz.netlify.app/"
+												target="_blank"
+											>
+												<i class="fa-solid fa-link"></i>
+												<p>Demo</p>
+											</a>
+											<a
+												href="https://github.com/andy820621/Todo-List__VanillaJS"
+												target="_blank"
+											>
+												<i class="fab fa-github"></i>
+												<p>Github</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/TodoList/1.jpg"></span>
+								</div>
+							</figure>
+							<!-- 11 -->
 							<figure class="product fade-in clear-twinkling-transition active">
-								<a
-									href="/image/Coffe_machine/1.jpg"
-									title="coffee machine image"
-									class="lightbox-enabled"
-									tabindex="0"
-								>
+								<div class="lightbox-enabled" tabindex="0">
 									<picture>
 										<img
 											loading="lazy"
@@ -862,15 +1156,63 @@
 									<span data-imagesrc="/image/Coffe_machine/5.jpg">5 / 7</span>
 									<span data-imagesrc="/image/Coffe_machine/6.jpg">6 / 7</span>
 									<span data-imagesrc="/image/Coffe_machine/7.jpg">7 / 7</span>
-								</a>
+								</div>
 							</figure>
+							<!-- 12 -->
+							<figure class="web fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/Atom.jpg"
+											alt="Atom image"
+											title="Atom"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Atom with Three.js</div>
+										<div class="links flex">
+											<a
+												href="https://codepen.io/eebgwuss/full/dymBmKq"
+												target="_blank"
+											>
+												<i class="fa-brands fa-codepen"></i>
+												<p>Codepen</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/Atom/1.gif"></span>
+								</div>
+							</figure>
+							<!-- 13 -->
+							<figure class="web fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/Animated_Svg_Radio.jpg"
+											alt="Animated Svg Radio image"
+											title="Animated Svg Radio"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Animated Svg Radio</div>
+										<div class="links flex">
+											<a
+												href="https://codepen.io/eebgwuss/full/yLKWExy"
+												target="_blank"
+											>
+												<i class="fa-brands fa-codepen"></i>
+												<p>Codepen</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/Animated_Svg_Radio/1.gif"></span>
+								</div>
+							</figure>
+							<!-- 14 -->
 							<figure class="fade-in clear-twinkling-transition active">
-								<a
-									href="/image/Food_Deliver_App/1.gif"
-									title="FoodDeliver app image"
-									class="lightbox-enabled"
-									tabindex="0"
-								>
+								<div class="lightbox-enabled" tabindex="0">
 									<picture>
 										<img
 											loading="lazy"
@@ -904,15 +1246,192 @@
 									<span data-imagesrc="/image/Food_Deliver_App/gif.gif"
 										>7 / 7</span
 									>
-								</a>
+								</div>
 							</figure>
+							<!-- 15 -->
+							<figure class="web fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/Movie_Shop.jpg"
+											alt="Movie Shop image"
+											title="Movie Shop"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Movie Shop using Vue</div>
+										<div class="links flex">
+											<a
+												href="https://movie-select-shop.vercel.app/"
+												target="_blank"
+											>
+												<i class="fa-solid fa-link"></i>
+												<p>Demo</p>
+											</a>
+											<a
+												href="https://github.com/andy820621/Movie-Select-Shop"
+												target="_blank"
+											>
+												<i class="fab fa-github"></i>
+												<p>Github</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/Movie_Shop/1.jpg"></span>
+								</div>
+							</figure>
+							<!-- 16 -->
+							<figure class="game fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/Snake_Game.jpg"
+											alt="Sanke_Game image"
+											title="Sanke_Game"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Snake Game</div>
+										<div class="links flex">
+											<a
+												href="https://codepen.io/eebgwuss/full/GRQroyo"
+												target="_blank"
+											>
+												<i class="fa-brands fa-codepen"></i>
+												<p>Codepen</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/Snake_Game/1.jpg"></span>
+								</div>
+							</figure>
+							<!-- 17 -->
+							<figure class="game fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/Space_Invaders.jpg"
+											alt="Space Invaders image"
+											title="Space Invaders"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Space Invaders</div>
+										<div class="links flex">
+											<a
+												href="https://codepen.io/eebgwuss/full/gOezZVv"
+												target="_blank"
+											>
+												<i class="fa-brands fa-codepen"></i>
+												<p>Codepen</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/Space_Invaders/1.jpg"></span>
+								</div>
+							</figure>
+							<!-- 18 -->
 							<figure class="product fade-in clear-twinkling-transition active">
-								<a
-									href="/image/Dunes_Divan/1.jpg"
-									title="Dunes Divan image"
-									class="lightbox-enabled"
-									tabindex="0"
-								>
+								<div class="lightbox-enabled" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/turnhands.jpg"
+											alt="TurnHands Img"
+											title="轉守"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">轉守</div>
+										<p>View More</p>
+									</div>
+									<span data-imagesrc="/image/TurnHands/1.jpg">1 / 8</span>
+									<span data-imagesrc="/image/TurnHands/2.jpg">2 / 8</span>
+									<span data-imagesrc="/image/TurnHands/3.jpg">3 / 8</span>
+									<span data-imagesrc="/image/TurnHands/4.jpg">4 / 8</span>
+									<span data-imagesrc="/image/TurnHands/5.jpg">5 / 8</span>
+									<span data-imagesrc="/image/TurnHands/6.jpg">6 / 8</span>
+									<span data-imagesrc="/image/TurnHands/7.jpg">7 / 8</span>
+									<span data-imagesrc="/image/TurnHands/8.jpg">8 / 8</span>
+								</div>
+							</figure>
+							<!-- 19 -->
+							<figure class="graphic fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/kanazawa.jpg"
+											alt="Kanazawa Img"
+											title="Kanazawa Travel Poster"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Kanazawa Travel Poster</div>
+										<p>View More</p>
+									</div>
+									<span data-imagesrc="/image/kanezawa/1.jpg">1 / 2</span>
+									<span data-imagesrc="/image/kanezawa/2.jpg">2 / 2</span>
+								</div>
+							</figure>
+							<!-- 20 -->
+							<figure class="game fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/NS-SHIFT.jpg"
+											alt="NS-SHIFT image"
+											title="NS-SHIFT"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">NS-SHIFT</div>
+										<div class="links flex">
+											<a
+												href="https://codepen.io/eebgwuss/full/OJvzzga"
+												target="_blank"
+											>
+												<i class="fa-brands fa-codepen"></i>
+												<p>Codepen</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/NS-SHIFT/1.jpg"></span>
+								</div>
+							</figure>
+							<!-- 21 -->
+							<figure class="game fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
+									<picture>
+										<img
+											loading="lazy"
+											src="/image/thumbnail/Agar.io.jpg"
+											alt="Agar.io image"
+											title="Agar.io"
+										/>
+									</picture>
+									<div class="overlay flex fxDirectionC fxJcC fxAiC">
+										<div class="figcaption-title">Agar.io</div>
+										<div class="links flex">
+											<a
+												href="https://codepen.io/eebgwuss/full/wvmdmaL"
+												target="_blank"
+											>
+												<i class="fa-brands fa-codepen"></i>
+												<p>Codepen</p>
+											</a>
+										</div>
+									</div>
+									<span data-imagesrc="/image/Agar.io/1.jpg"></span>
+								</div>
+							</figure>
+							<!-- 22 -->
+							<figure class="product fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled" tabindex="0">
 									<picture>
 										<img
 											loading="lazy"
@@ -934,98 +1453,37 @@
 									<span data-imagesrc="/image/Dunes_Divan/7.jpg">7 / 9</span>
 									<span data-imagesrc="/image/Dunes_Divan/8.jpg">8 / 9</span>
 									<span data-imagesrc="/image/Dunes_Divan/9.jpg">9 / 9</span>
-								</a>
+								</div>
 							</figure>
-							<figure class="graphic fade-in clear-twinkling-transition active">
-								<a
-									href="/image/Swallow/1.jpg"
-									title="Swallow image"
-									class="lightbox-enabled"
-									tabindex="0"
-								>
+							<!-- 23 -->
+							<figure class="web fade-in clear-twinkling-transition active">
+								<div class="lightbox-enabled withLinks" tabindex="0">
 									<picture>
 										<img
 											loading="lazy"
-											src="/image/thumbnail/Swallow.jpg"
-											alt="Swallow Img"
-											title="燕子谷"
+											src="/image/thumbnail/DNA.gif"
+											alt="DNA image"
+											title="DNA"
 										/>
 									</picture>
 									<div class="overlay flex fxDirectionC fxJcC fxAiC">
-										<div class="figcaption-title">燕子谷</div>
-										<p>View More</p>
+										<div class="figcaption-title">DNA using canvas</div>
+										<div class="links flex">
+											<a
+												href="https://codepen.io/eebgwuss/full/vYRXbew"
+												target="_blank"
+											>
+												<i class="fa-brands fa-codepen"></i>
+												<p>Codepen</p>
+											</a>
+										</div>
 									</div>
-									<span data-imagesrc="/image/Swallow/1.jpg">1 / 10</span>
-									<span data-imagesrc="/image/Swallow/2.jpg">2 / 10</span>
-									<span data-imagesrc="/image/Swallow/3.jpg">3 / 10</span>
-									<span data-imagesrc="/image/Swallow/4.jpg">4 / 10</span>
-									<span data-imagesrc="/image/Swallow/5.jpg">5 / 10</span>
-									<span data-imagesrc="/image/Swallow/5.gif">6 / 10</span>
-									<span data-imagesrc="/image/Swallow/6.jpg">7 / 10</span>
-									<span data-imagesrc="/image/Swallow/7.jpg">8 / 10</span>
-									<span data-imagesrc="/image/Swallow/8.jpg">9 / 10</span>
-									<span data-imagesrc="/image/Swallow/9.jpg">10 / 10</span>
-								</a>
+									<span data-imagesrc="/image/DNA/1.gif"></span>
+								</div>
 							</figure>
-							<figure class="product fade-in clear-twinkling-transition active">
-								<a
-									href="/image/TurnHands/1.jpg"
-									title="TurnHands image"
-									class="lightbox-enabled"
-									tabindex="0"
-								>
-									<picture>
-										<img
-											loading="lazy"
-											src="/image/thumbnail/turnhands.jpg"
-											alt="TurnHands Img"
-											title="轉守"
-										/>
-									</picture>
-									<div class="overlay flex fxDirectionC fxJcC fxAiC">
-										<div class="figcaption-title">轉守</div>
-										<p>View More</p>
-									</div>
-									<span data-imagesrc="/image/TurnHands/1.jpg">1 / 8</span>
-									<span data-imagesrc="/image/TurnHands/2.jpg">2 / 8</span>
-									<span data-imagesrc="/image/TurnHands/3.jpg">3 / 8</span>
-									<span data-imagesrc="/image/TurnHands/4.jpg">4 / 8</span>
-									<span data-imagesrc="/image/TurnHands/5.jpg">5 / 8</span>
-									<span data-imagesrc="/image/TurnHands/6.jpg">6 / 8</span>
-									<span data-imagesrc="/image/TurnHands/7.jpg">7 / 8</span>
-									<span data-imagesrc="/image/TurnHands/8.jpg">8 / 8</span>
-								</a>
-							</figure>
+							<!-- 24 -->
 							<figure class="graphic fade-in clear-twinkling-transition active">
-								<a
-									href="/image/kanezawa/1.jpg"
-									title="kanezawa image"
-									class="lightbox-enabled"
-									tabindex="0"
-								>
-									<picture>
-										<img
-											loading="lazy"
-											src="/image/thumbnail/kanazawa.jpg"
-											alt="Kanazawa Img"
-											title="Kanazawa Travel Poster"
-										/>
-									</picture>
-									<div class="overlay flex fxDirectionC fxJcC fxAiC">
-										<div class="figcaption-title">Kanazawa Travel Poster</div>
-										<p>View More</p>
-									</div>
-									<span data-imagesrc="/image/kanezawa/1.jpg">1 / 2</span>
-									<span data-imagesrc="/image/kanezawa/2.jpg">2 / 2</span>
-								</a>
-							</figure>
-							<figure class="graphic fade-in clear-twinkling-transition active">
-								<a
-									href="/image/BarZ_Logo/1.jpg"
-									title="BarZ logo image"
-									class="lightbox-enabled"
-									tabindex="0"
-								>
+								<div class="lightbox-enabled" tabindex="0">
 									<picture>
 										<img
 											loading="lazy"
@@ -1040,7 +1498,7 @@
 									</div>
 									<span data-imagesrc="/image/BarZ_Logo/1.jpg">1 / 2</span>
 									<span data-imagesrc="/image/BarZ_Logo/2.jpg">2 / 2</span>
-								</a>
+								</div>
 							</figure>
 						</section>
 					</div>

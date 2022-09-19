@@ -346,6 +346,17 @@ for (let i = 0; i < WorksSort.length; i++) {
 }
 
 // page first load
+const gameFigures = document.querySelectorAll("figure.game");
+// hide game figures when in mobile
+setGameActiveOrNot();
+function setGameActiveOrNot() {
+	const nowGridNumber = getGridNumber();
+	gameFigures.forEach((gameFigure) => {
+		gameFigure.classList.toggle("active", nowGridNumber === 3);
+		gameFigure.classList.toggle("delete", nowGridNumber === 2);
+	});
+}
+// get grid number
 let now_grid_number = getGridNumber();
 serFigurePosition(now_grid_number);
 
@@ -383,13 +394,18 @@ function getGridNumber() {
 window.addEventListener("resize", () => {
 	const new_grid_number = getGridNumber();
 	if (new_grid_number === now_grid_number) return;
+	// set now_grid_number
 	now_grid_number = new_grid_number;
+	// hide game figures when in mobile
+	setGameActiveOrNot();
+	// reset Position
 	updateThrottleserFigurePosition(new_grid_number);
 });
 
 // LightBox query selectors
 const work = document.querySelector("#work");
 const lightboxEnabled = document.querySelectorAll(".lightbox-enabled");
+const lightboxEnabledLinks = document.querySelectorAll(".lightbox-enabled a");
 const lightboxContainer = document.querySelector(".lightbox-container");
 const lightboxImgWrapper = document.querySelector(".lightbox-image-wrapper");
 const lightboxImg = document.querySelector(".lightbox-img");
@@ -420,6 +436,7 @@ const hideLightBox = function () {
 	sections[4].style.paddingRight = "0";
 };
 let x;
+let galleryImg;
 const setActiveImage = function (x) {
 	// Ensure that there is no residual image
 	if (lightboxImg.src) {
@@ -431,6 +448,11 @@ const setActiveImage = function (x) {
 	// Make sure both Btn is working
 	removeBtnInavtiveClass();
 	// Through hidden buttons, make users know now in first or end image of the gallery
+	if (galleryImg.length === 1) {
+		lightboxBtnLeft.classList.add("inactive");
+		lightboxBtnRight.classList.add("inactive");
+		return;
+	}
 	switch (x) {
 		case 0:
 			lightboxBtnLeft.classList.add("inactive");
@@ -442,7 +464,6 @@ const setActiveImage = function (x) {
 			removeBtnInavtiveClass();
 	}
 };
-let galleryImg;
 const getGalleryImg = function (i) {
 	galleryImg = lightboxEnabled[i].getElementsByTagName("span");
 };
@@ -488,14 +509,19 @@ const transitionSlideHandler = function (moveItem) {
 };
 
 // event listeners
-lightboxEnabled.forEach((e, index) => {
-	e.addEventListener("click", function (el) {
-		el.preventDefault();
+lightboxEnabled.forEach((item, index) => {
+	item.addEventListener("click", function (e) {
+		e.preventDefault();
 		getGalleryImg(index);
 		showLightBox();
 		setActiveImage((x = 0));
 	});
 });
+lightboxEnabledLinks.forEach((item) =>
+	item.addEventListener("click", (e) => {
+		e.stopPropagation();
+	})
+);
 
 let half = document.body.offsetWidth / 2;
 const updateHalfValue = throttle(
@@ -518,6 +544,8 @@ lightboxImgWrapper.addEventListener("click", function (e) {
 	}
 });
 lightboxImgWrapper.addEventListener("mousemove", function (e) {
+	if (galleryImg.length === 1)
+		return (lightboxImgWrapper.style.cursor = "default");
 	if (e.clientX >= half) {
 		lightboxImgWrapper.style.cursor = "url('svg/right.svg'), auto";
 	} else {
