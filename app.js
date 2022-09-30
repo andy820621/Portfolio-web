@@ -5,35 +5,15 @@ import {
 	softwareSliderFunction,
 } from "./slider.js";
 
-const dataJpgs = [...document.querySelectorAll("img[data-jpg]")];
-// Test webp work or not
-function testWebP() {
-	return new Promise((res) => {
-		const webP = new Image();
-		webP.src =
-			"data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA";
-		webP.onload = webP.onerror = () => {
-			res(webP.height === 2);
-		};
-	});
-}
-testWebP()
-	.then((hasWebP) => {
-		dataJpgs.forEach((dataJpg) => {
-			// Change to use .Jpg
-			if (!hasWebP) dataJpg.setAttribute("data-webp", dataJpg.dataset.jpg);
-		});
-	})
-	.then(() => {
-		// Change image src from placeholder to original img
-		dataJpgs.forEach((dataJpg) => {
-			let imageLarges = new Image();
-			imageLarges.src = dataJpg.dataset.webp;
-			imageLarges.onload = function () {
-				dataJpg.setAttribute("src", dataJpg.dataset.webp);
-			};
-		});
-	});
+// image placeholder for slider
+const dataWebps = [...document.querySelectorAll("img[data-webp]")];
+dataWebps.forEach((dataWebp) => {
+	let imageLarges = new Image();
+	imageLarges.src = dataWebp.dataset.webp;
+	imageLarges.onload = function () {
+		dataWebp.setAttribute("src", dataWebp.dataset.webp);
+	};
+});
 
 // Typewritter Design
 function textAnimation() {
