@@ -9,6 +9,8 @@
 		"preview": "vite preview"
 	},
 	"devDependencies": {
+		"imagemin": "^8.0.1",
+		"imagemin-webp": "^7.0.0",
 		"vite": "^3.0.7"
 	}
 }
