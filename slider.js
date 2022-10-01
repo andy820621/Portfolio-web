@@ -69,10 +69,10 @@ function headerSlider(slider) {
 		});
 
 		// Touch events
-		li.addEventListener("touchstart", touchStart(index));
-		li.addEventListener("touchend", touchEnd);
-		li.addEventListener("touchcancel", touchEnd);
-		li.addEventListener("touchmove", updateSliderPosition);
+		li.addEventListener("touchstart", touchStart(index), { passive: true });
+		li.addEventListener("touchend", touchEnd, { passive: true });
+		li.addEventListener("touchcancel", touchEnd, { passive: true });
+		li.addEventListener("touchmove", updateSliderPosition, { passive: true });
 		// Mouse events
 		li.addEventListener("mousedown", touchStart(index));
 		li.addEventListener("mouseup", touchEnd);

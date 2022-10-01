@@ -3,7 +3,6 @@
 @import "layout.css";
 @import "style-common.css";
 @import "gallery.css";
-@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
 	--clr-primary: hsl(26, 32%, 66%);
@@ -82,13 +81,6 @@ body {
 .slider-gallery.grabbing {
 	transition: 0s;
 }
-.slider-gallery::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background-color: rgba(0, 0, 0, 0.4);
-	pointer-events: none;
-}
 .slider-gallery li {
 	width: 100vw;
 	height: inherit;
@@ -115,6 +107,10 @@ body {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+}
+header .slider-gallery li img {
+	/* header slider only */
+	filter: brightness(0.6);
 }
 .slider-gallery li img.active {
 	animation: slowly_shrink 5s linear 0s infinite alternate;
