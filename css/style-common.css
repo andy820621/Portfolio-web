@@ -324,6 +324,7 @@
 	opacity: 0;
 	transform: translateY(50%) translateZ(0);
 	transition: opacity 0.25s ease-in, transform 0.4s ease-in;
+	transition-delay: var(--delay);
 }
 .fade-in.appear {
 	opacity: 1;
