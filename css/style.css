@@ -111,6 +111,10 @@ body {
 	transform: scale(1.1);
 	/* pointer-events: none; */
 	user-select: none;
+	/* background placeholder design */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .slider-gallery li img.active {
 	animation: slowly_shrink 5s linear 0s infinite alternate;
@@ -357,11 +361,15 @@ nav .logo a:hover svg {
 	justify-content: center;
 	align-items: center;
 	cursor: pointer;
-	transition: color 0.4s, background-color 0.4s, border-color 0.4s;
+	transition: 0.3s ease-out;
 }
 .header-content .social li a {
-	color: var(--clr-white);
-	font-size: 1.2rem;
+	display: grid;
+	place-items: center;
+}
+.header-content .social li a svg {
+	transform: scale(0.9);
+	transition: 0.3s ease-out;
 }
 .header-content .social li + li {
 	margin-left: 1.2rem;
@@ -620,9 +628,16 @@ nav.cross a {
 	align-items: center;
 }
 #about .about-content .center .introduction li a {
-	font-size: clamp(17px, 1.5vw, 24px);
-	color: rgb(158, 158, 158);
-	transition: color 0.4s;
+	display: grid;
+	place-items: center;
+}
+#about .about-content .center .introduction li a svg {
+	--clr-fill: rgb(158, 158, 158);
+	transform: scale(0.9);
+	transition: 0.3s;
+}
+#about .about-content .center .introduction li a svg path {
+	transition: 0.3s;
 }
 
 #about .about-content .bar {
@@ -1023,18 +1038,19 @@ nav.cross a {
 .work-content > figure .overlay > .links > a {
 	color: var(--clr-white);
 }
-.work-content > figure .overlay > .links > a > i {
-	font-size: 1.1rem;
+.work-content > figure .overlay > .links > a > svg {
+	--clr-fill: var(--clr-white);
+	transform: scale(0.81);
 }
-.work-content > figure .overlay > .links > a > i.codepen {
-	font-size: 1.3rem;
-}
-.work-content > figure .overlay > .links > a {
+.work-content > figure .overlay > .links > :where(a, a svg path) {
 	transition: all 0.3s;
 }
 .work-content > figure .overlay > .links > a:hover {
 	color: var(--clr-primary);
 	scale: 1.1;
+}
+.work-content > figure .overlay > .links > a:hover svg path {
+	--clr-fill: var(--clr-primary);
 }
 .work-content > figure .overlay::before {
 	content: "";
@@ -1108,13 +1124,20 @@ nav.cross a {
 	flex-basis: 20%;
 	padding: 0 1rem;
 }
-.contact-social li :is(a, p) {
+.contact-social li p {
 	color: white;
-	transition: color 0.4s;
+	transition: 0.3s ease-out;
 }
 #contact .social p {
 	display: none;
 } /* Mobile only */
+#contact .social svg {
+	--clr-fill: var(--clr-white);
+}
+#contact .social svg,
+#contact .social svg path {
+	transition: 0.3s ease-out;
+}
 
 #contact .copyright {
 	background-color: hsla(0, 0%, 24%, 0.24);
@@ -1150,9 +1173,15 @@ nav.cross a {
 	.social ul > li:hover {
 		background-color: rgba(0, 0, 0, 0.178);
 		border-color: var(--clr-Darkprimary);
+		backdrop-filter: blur(0.24em);
 	}
-	#about .about-content .center .introduction a:hover {
-		color: var(--clr-primary);
+	header .social ul > li:hover a svg {
+		transform: scale(0.95);
+	}
+
+	#about .about-content .center .introduction a:hover svg {
+		--clr-fill: var(--clr-primary);
+		transform: scale(0.99);
 	}
 	.service-content-icon:hover {
 		border: 3px solid var(--clr-thirdprimary);
@@ -1185,8 +1214,12 @@ nav.cross a {
 		border: 1.5px solid var(--clr-bgGrey);
 	}
 
-	.contact-social ul li:hover :is(a, p) {
+	.contact-social ul li:hover p {
 		color: var(--clr-primary);
+	}
+	#contact .social li:hover svg {
+		--clr-fill: var(--clr-primary);
+		transform: scale(1.1);
 	}
 }
 

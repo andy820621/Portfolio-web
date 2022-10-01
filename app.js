@@ -5,16 +5,6 @@ import {
 	softwareSliderFunction,
 } from "./slider.js";
 
-// image placeholder for slider
-const dataWebps = [...document.querySelectorAll("img[data-webp]")];
-dataWebps.forEach((dataWebp) => {
-	let imageLarges = new Image();
-	imageLarges.src = dataWebp.dataset.webp;
-	imageLarges.onload = function () {
-		dataWebp.setAttribute("src", dataWebp.dataset.webp);
-	};
-});
-
 // Typewritter Design
 function textAnimation() {
 	gsap.defaults({
@@ -60,32 +50,6 @@ headerSlider(slider);
 // Software Slider Animation
 const softwareSlider = document.querySelector(".software .slider-container");
 softwareSliderFunction(softwareSlider);
-
-// Adapt requestAnimationFrame to each browser
-(function () {
-	let lastTime = 0;
-	let vendors = ["ms", "moz", "webkit", "o"];
-	for (let x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-		window.requestAnimationFrame = window[vendors[x] + "RequestAnimationFrame"];
-		window.cancelAnimationFrame =
-			window[vendors[x] + "CancelAnimationFrame"] ||
-			window[vendors[x] + "CancelRequestAnimationFrame"];
-	}
-	if (!window.requestAnimationFrame)
-		window.requestAnimationFrame = function (callback, element) {
-			let currTime = new Date().getTime();
-			let timeToCall = Math.max(0, 16 - (currTime - lastTime));
-			let id = window.setTimeout(function () {
-				callback(currTime + timeToCall);
-			}, timeToCall);
-			lastTime = currTime + timeToCall;
-			return id;
-		};
-	if (!window.cancelAnimationFrame)
-		window.cancelAnimationFrame = function (id) {
-			clearTimeout(id);
-		};
-})();
 
 // Burger
 const nav = document.querySelector("nav");

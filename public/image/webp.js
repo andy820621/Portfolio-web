@@ -2,9 +2,9 @@ import imagemin from "imagemin";
 import webp from "imagemin-webp";
 
 const convertImages = async () => {
-	const files = ["./thumbnail/*.{jpg,png}"];
+	const files = ["./0_Me/*.{jpg,png}"];
 	const config = {
-		destination: "./thumbnail/",
+		destination: "./0_Me/",
 		plugins: [webp({ quality: 75 })],
 	};
 
