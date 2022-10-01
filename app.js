@@ -6,37 +6,61 @@ import {
 } from "./slider.js";
 
 // Typewritter Design
-function textAnimation() {
-	gsap.defaults({
-		duration: 1,
-		ease: "none",
-		repeat: 1,
-		repeatDelay: 1,
-		delay: 0.24,
-	});
-	gsap
-		.timeline({ repeat: -1 })
-		.to(".typewriter", {
-			text: "Hsieh Yao-tsu ",
-			yoyo: true,
-		})
-		.to(".typewriter", {
-			text: "Web Designer ",
-			yoyo: true,
-		})
-		.to(".typewriter", {
-			text: "Frontend Developer ",
-			yoyo: true,
-		})
-		.to(".typewriter", {
-			text: "SutterBug ",
-			yoyo: true,
-		});
+
+const typewriter = document.querySelector(".typewriter");
+// var textToBeTyped = "a software engineer"
+const textToBeTypedArr = [
+	"Hsieh Yao-tsu ",
+	"a Web Designer ",
+	"a Frontend Developer ",
+	"a SutterBug ",
+];
+let index = 0,
+	isAdding = true,
+	textToBeTypedIndex = 0;
+
+function playAnim() {
+	setTimeout(
+		() => {
+			// set the text of typewriter to a substring of the text to be typed using index.
+			typewriter.innerText = textToBeTypedArr[textToBeTypedIndex].slice(
+				0,
+				index
+			);
+			// play cursor blink animation or not
+			typewriter.classList.toggle("showAnim", isAdding);
+			if (isAdding) {
+				// adding text
+				if (index > textToBeTypedArr[textToBeTypedIndex].length) {
+					// no more text to add
+					isAdding = false;
+					//break: wait 2s before playing again
+					setTimeout(function () {
+						playAnim();
+					}, 2000);
+					return;
+				} else {
+					index++;
+				}
+			} else {
+				// removing text
+				if (index === 0) {
+					isAdding = true;
+					//switch to next text in text array
+					textToBeTypedIndex =
+						(textToBeTypedIndex + 1) % textToBeTypedArr.length;
+				} else {
+					index--;
+				}
+			}
+			// calls itself
+			playAnim();
+		},
+		isAdding ? 120 : 60
+	);
 }
-textAnimation();
-document
-	.querySelector(".typewriter")
-	.addEventListener("animationend", textAnimation);
+// start animation
+playAnim();
 
 // Disable content menu
 window.oncontextmenu = function (event) {

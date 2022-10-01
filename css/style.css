@@ -405,21 +405,22 @@ nav .logo a:hover svg {
 	display: inline-block;
 	padding-right: 0.8vw;
 }
-.header-content .typewriter {
-	display: block;
-	position: relative;
-	overflow: hidden;
-	white-space: nowrap;
-	animation: typing 3s ease infinite;
-}
+
 .header-content .typewriter::after {
-	content: "";
-	position: absolute;
-	width: 2px;
-	height: 100%;
-	background-color: var(--clr-white);
-	top: 0;
-	right: 0;
+	content: "|";
+	animation: none;
+}
+.header-content .showAnim.typewriter::after {
+	animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
 }
 
 /* Control burger */
