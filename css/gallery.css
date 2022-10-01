@@ -70,11 +70,12 @@
 .lightbox-container .lightbox-btn {
 	background-color: transparent;
 	border: none;
-	color: var(--clr-white);
 	font-size: 3rem;
 	cursor: pointer;
-	transition: all 0.3s ease-in-out;
+	transition: 0.3s ease-out;
 	position: absolute;
+
+	--clr-fill: var(--clr-white);
 }
 .lightbox-container .lightbox-btn.left {
 	top: calc(50% - 32px);
@@ -85,14 +86,17 @@
 	right: -5rem;
 }
 .lightbox-container .lightbox-btn.x {
-	top: -2.25rem;
+	top: -3rem;
 	right: 0;
 	font-size: 1.75rem;
 	cursor: zoom-out;
 }
+svg path {
+	transition: 0.3s ease-out;
+}
 @media (hover) {
 	.lightbox-container .lightbox-btn:hover {
-		color: var(--clr-primary);
+		--clr-fill: var(--clr-primary);
 	}
 	.lightbox-container .lightbox-btn.left:hover {
 		left: -5.25rem;
@@ -123,18 +127,18 @@
 	}
 	.lightbox-container .lightbox-btn.left {
 		background-color: rgba(24, 24, 24, 0.24);
-		padding: 1px 12px 1px 6px;
+		padding: 0 12px 0 6px;
 		left: 0;
 	}
 	.lightbox-container .lightbox-btn.right {
 		background-color: rgba(24, 24, 24, 0.24);
-		padding: 1px 6px 1px 12px;
+		padding: 0 6px 0 12px;
 		right: 0;
 	}
 	@media (hover) {
 		.lightbox-container :is(.lightbox-btn.left, .lightbox-btn.right):hover {
 			background-color: var(--clr-primary);
-			color: inherit;
+			--clr-fill: var(--clr-white);
 		}
 		.lightbox-container .lightbox-btn.left:hover {
 			left: 0.25rem;

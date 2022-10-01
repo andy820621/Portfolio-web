@@ -131,7 +131,6 @@ body {
 .slider-container :is(.prev, .next) {
 	font-size: 2.5rem;
 	border: none;
-	color: var(--clr-lightgrey);
 	background-color: var(--clr-white-transparent);
 	cursor: pointer;
 	position: absolute;
@@ -142,18 +141,24 @@ body {
 	/* Mobile design */
 	opacity: 0;
 	visibility: hidden;
+
+	--clr-fill: var(--clr-lightgrey);
+	border-radius: 0.24rem;
+}
+.slider-container :is(.prev, .next) svg path {
+	transition: all 0.24s ease;
 }
 .slider-container .prev {
 	left: 10px;
-	padding: 0.4rem 1rem 0.4rem 0.8rem;
+	padding: 0 1rem 0 0.8rem;
 }
 .slider-container .next {
 	right: 10px;
-	padding: 0.4rem 0.8rem 0.4rem 1rem;
+	padding: 0 0.8rem 0 1rem;
 }
 
 .slider-container :is(.prev, .next):hover {
-	color: var(--clr-white);
+	--clr-fill: var(--clr-white);
 	background-color: var(--clr-Darkprimary);
 }
 .slider-container .prev:hover {
