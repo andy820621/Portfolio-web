@@ -129,7 +129,6 @@ body {
 }
 
 .slider-container :is(.prev, .next) {
-	font-size: 2.5rem;
 	border: none;
 	background-color: var(--clr-white-transparent);
 	cursor: pointer;
@@ -144,17 +143,21 @@ body {
 
 	--clr-fill: var(--clr-lightgrey);
 	border-radius: 0.24rem;
+	display: grid;
+	place-items: center;
+	padding: 0;
+}
+.slider-container :is(.prev, .next) svg {
+	margin: 0.8rem;
 }
 .slider-container :is(.prev, .next) svg path {
 	transition: all 0.24s ease;
 }
 .slider-container .prev {
 	left: 10px;
-	padding: 0 1rem 0 0.8rem;
 }
 .slider-container .next {
 	right: 10px;
-	padding: 0 0.8rem 0 1rem;
 }
 
 .slider-container :is(.prev, .next):hover {

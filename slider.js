@@ -80,9 +80,11 @@ function headerSlider(slider) {
 		li.addEventListener("mousemove", updateSliderPosition);
 	});
 
-	addGlobalEventListener("click", ".slider-container button", (e) => {
-		e.target.classList.contains("prev") ? slide("prev") : slide();
-	});
+	const btns = slider.querySelectorAll(".slider-container button");
+	btns.forEach((btn, index) =>
+		btn.addEventListener("click", () => (!index ? slide("prev") : slide()))
+	);
+
 	dots.forEach((dot, index) => {
 		dot.addEventListener("click", function () {
 			if (index !== currentIndex) {
@@ -260,9 +262,11 @@ function softwareSliderFunction(slider) {
 		li.addEventListener("mousemove", updateSliderPosition);
 	});
 
-	addGlobalEventListener("click", ".slider-container button", (e) => {
-		e.target.classList.contains("prev") ? slide("prev") : slide();
-	});
+	const btns = slider.querySelectorAll(".slider-container button");
+	btns.forEach((btn, index) =>
+		btn.addEventListener("click", () => (!index ? slide("prev") : slide()))
+	);
+
 	dots.forEach((dot, index) => {
 		dot.addEventListener("click", function () {
 			if (index !== currentIndex) {
