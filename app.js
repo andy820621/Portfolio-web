@@ -6,7 +6,6 @@ import {
 } from "./slider.js";
 
 // Typewritter Design
-
 const typewriter = document.querySelector(".typewriter");
 // var textToBeTyped = "a software engineer"
 const textToBeTypedArr = [
@@ -59,8 +58,7 @@ function playAnim() {
 		isAdding ? 120 : 60
 	);
 }
-// start animation
-playAnim();
+playAnim(); // start animation
 
 // Disable content menu
 window.oncontextmenu = function (event) {
@@ -211,8 +209,6 @@ addGlobalEventListener("click", "[data-scroll]", (e) => {
 });
 
 //Window scroll events
-const sections = [...document.querySelectorAll("div[id]:not(.navMenu)")];
-
 const updateNavClass = throttle(() => {
 	// Navbar color change when scroll
 	if (window.scrollY <= 24) {
@@ -223,7 +219,37 @@ const updateNavClass = throttle(() => {
 }, 240);
 window.addEventListener("scroll", updateNavClass);
 
+let noScrolling = 0,
+	lastScrollTop = 0,
+	navHeight = nav.offsetHeight,
+	headerHeight = document.querySelector(".header").clientHeight;
+
+const updateNavIfActive = throttle(onScroll, 500);
+window.addEventListener("scroll", updateNavIfActive);
+function onScroll() {
+	if (noScrolling || window.pageYOffset < headerHeight) return;
+	if (
+		window.innerHeight + window.pageYOffset >=
+		document.body.offsetHeight - navHeight
+	)
+		return;
+	requestAnimationFrame(hasScrolled);
+	noScrolling = true;
+}
+function hasScrolled() {
+	let windowScrollTop =
+		window.pageYOffset ||
+		document.documentElement.scrollTop + document.body.scrollTop;
+	nav.classList.toggle(
+		"nav-up",
+		windowScrollTop > navHeight && windowScrollTop > lastScrollTop
+	);
+	lastScrollTop = windowScrollTop;
+	noScrolling = false;
+}
+
 // Menu Active when scroll to the section
+const sections = [...document.querySelectorAll("div[id]:not(.navMenu)")];
 const sectionsOptions = {
 	rootMargin: "-45% 0px -55%",
 };

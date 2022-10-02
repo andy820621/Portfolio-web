@@ -209,12 +209,16 @@ nav a {
 nav.scrolled {
 	box-shadow: 0 3px 8px hsla(0, 0%, 0%, 0.3);
 	background-color: var(--clr-bgLight);
+	transition: all 0.3s;
 }
 nav.scrolled > div.container {
 	padding: calc(2.8vh / 2) 2.8vh;
 }
 nav.scrolled a {
 	color: var(--clr-black);
+}
+nav.scrolled.nav-up {
+	transform: translateY(-100%);
 }
 
 nav {
