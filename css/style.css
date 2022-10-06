@@ -994,19 +994,7 @@ nav.cross a {
 	left: calc(var(--x) * (var(--grid-gap) + var(--figure-size)));
 	top: calc(var(--y) * (var(--grid-gap) + var(--figure-size)));
 }
-/* Lazy loading design start */
-.work-content > figure.active.fade-in {
-	--delay: calc(var(--x) * 0.1s);
-	opacity: 0;
-	transform: translateY(24%) translateZ(0);
-	transition: opacity 0.25s ease-in, transform 0.4s ease-in;
-	transition-delay: var(--delay);
-}
-.work-content > figure.active.fade-in.appear {
-	opacity: 1;
-	transform: translateY(0%);
-}
-/* Lazy loading design end */
+
 .work-content > figure.active {
 	opacity: 1;
 	visibility: visible;
@@ -1021,6 +1009,19 @@ nav.cross a {
 	transform: scale(0);
 	/* transform-origin: bottom right; */
 }
+/* Lazy loading design start */
+.work-content > figure.fade-in {
+	--delay: calc(var(--x) * 0.1s);
+	opacity: 0;
+	translate: 0 24%;
+	transition: all 0.4s ease-in, opacity 0.25s ease-in;
+	transition-delay: var(--delay);
+}
+.work-content > figure.fade-in.appear {
+	opacity: 1;
+	translate: 0% 0%;
+}
+/* Lazy loading design end */
 .work-content > figure .figcaption-title {
 	font-weight: 600;
 } /* Mobile only */

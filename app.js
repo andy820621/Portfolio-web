@@ -285,6 +285,12 @@ const appearOnScroll = new IntersectionObserver(function (
 			return;
 		} else {
 			entry.target.classList.add("appear");
+			if (entry.target.classList.contains("active")) {
+				entry.target.addEventListener("transitionend", (e) => {
+					entry.target.classList.remove("fade-in");
+					entry.target.classList.remove("appear");
+				});
+			}
 			appearOnScroll.unobserve(entry.target);
 		}
 	});
