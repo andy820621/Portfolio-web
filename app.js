@@ -308,13 +308,25 @@ fromRights.forEach((fromRight) => {
 });
 
 // Workmenu
-const WorksSort = document.querySelector(".works-sort").children;
+const WorkSortCotainer = document.querySelector(".works-sort");
+const WorksSort = WorkSortCotainer.children;
 const WorkContent = document.querySelector(".work-content");
 const WorksFigures = document
 	.querySelector(".work-content")
 	.querySelectorAll("figure");
-// const activeFigures = () => WorkContent.querySelectorAll(".active");
-
+// Remove Fadein Class to cancel animation if start to click sort button
+WorkSortCotainer.addEventListener("click", removeFigureFadeinClass);
+function removeFigureFadeinClass() {
+	WorksFigures.forEach((figure) => {
+		figure.classList.remove("fade-in");
+		figure.classList.remove("apprear");
+	});
+	removeWorkSortContainerEventListener();
+}
+function removeWorkSortContainerEventListener() {
+	WorkSortCotainer.removeEventListener("click", removeFigureFadeinClass);
+}
+// Sort
 for (let i = 0; i < WorksSort.length; i++) {
 	WorksSort[i].addEventListener("click", (e) => {
 		document.querySelector(".works-sort .current").classList.remove("current");
