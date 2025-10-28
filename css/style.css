@@ -70,6 +70,7 @@ body {
 	/* height: min(1080px, 100vh); */
 	height: clamp(700px, 100vh, 1080px);
 	color: var(--clr-white);
+	align-items: center;
 }
 
 /* Slider */
@@ -407,7 +408,6 @@ nav .logo a:hover svg {
 	font-size: clamp(2rem, 3vw, 3rem);
 	width: 100%;
 	justify-content: center;
-	text-align: left; /* tablet and mobile desigen */
 	font-weight: 800; /* mobile desigen */
 }
 
