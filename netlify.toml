@@ -7,5 +7,3 @@
 [build.environment]
   # Node.js 版本
   NODE_VERSION = "22.21.0"
-  # 使用 npm 9+ 修復 optional dependencies bug
-  NPM_FLAGS = "--legacy-peer-deps"
