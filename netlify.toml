@@ -1,13 +1,11 @@
 [build]
   # 建置指令
-  command = "npm run build"
+  command = "npm ci --include=optional && npm run build"
   # 發佈目錄
   publish = "dist"
 
 [build.environment]
   # Node.js 版本
   NODE_VERSION = "22.21.0"
-
-# 防止 Netlify 使用舊的 Node 版本快取
-[build.processing]
-  skip_processing = false
+  # 使用 npm 9+ 修復 optional dependencies bug
+  NPM_FLAGS = "--legacy-peer-deps"
